@@ -1,0 +1,15 @@
+@use "../../styles/partials/variables" as *;
+
+footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: $secondarydark;
+  color: white;
+}
+
+.foot-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
