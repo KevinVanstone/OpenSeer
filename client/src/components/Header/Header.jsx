@@ -8,11 +8,8 @@ class Header extends Component {
     return (
       <header className="header">
         <img className="header__logo" src={Logo} alt="Open Seer" />
-        Open Seer
-        <SearchBar />
-        <div className="header__buttons">
-        <p>Log In</p>
-        <p>Sign Up</p>
+        
+        <div className="header__nav"><SearchBar />
         <p>Profile</p>
         </div>
       </header>

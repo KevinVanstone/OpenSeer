@@ -5,12 +5,12 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: $secondarydark;
   color: white;
-  &__buttons {
+  &__nav {
     display: flex;
-    align-items: center;
+    justify-content: space-around;
+    width: -webkit-fill-available;
   }
   &__logo {
     max-height: 50px;
@@ -18,9 +18,8 @@
   }
   &__search-bar {
     max-height: 2.25rem;
-    margin: 1rem 1rem 0rem 0rem;
     background-color: white;
-    max-width: 50%;
+    max-width: 35vw;
     border-radius: 0.25rem;
     border-color: grey;
     padding-left: 15%;
