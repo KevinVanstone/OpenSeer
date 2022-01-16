@@ -9,7 +9,8 @@ class Header extends Component {
       <header className="header">
         <img className="header__logo" src={Logo} alt="Open Seer" />
         
-        <div className="header__nav"><SearchBar />
+        <div className="header__nav">
+          
         <p>Profile</p>
         </div>
       </header>
