@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import DisplayNFTs from "../DisplayNFTs/DisplayNFTs.jsx";
 
 const options = {
   method: "GET",
@@ -15,7 +16,13 @@ class SearchBar extends Component {
   state = {
     addy: null,
     userData: null,
+    imgurl1: null,
   };
+
+  componentDidUpdate(prevProps, props) {
+    const data = this.state;
+    console.log("The state has been updated to: ", data);
+  }
 
   // Function to search for wallet address
   walletSearch = (event) => {
@@ -30,9 +37,10 @@ class SearchBar extends Component {
       .request(options)
       .then((response) => {
         const data = response.data;
+        console.log(data);
         this.setState({
-          addy: addyToSearch,
           userData: data,
+          addy: addyToSearch,
         });
         console.log(this.state);
       })
@@ -52,6 +60,9 @@ class SearchBar extends Component {
             placeholder="Search"
           />
         </form>
+        {this.state.userData && (
+          <DisplayNFTs NFTObjects={this.state.userData} />
+        )}
       </div>
     );
   }
