@@ -15,7 +15,7 @@ const DisplayNFTSearch = (props) => {
               <h2>{asset.name}</h2>
               {/* <p>{asset.description}</p> */}
 
-              <img className="NFT__preview" src={asset.cached_file_url} />
+              <img className="collection__preview" src={asset.cached_file_url} />
             </div>
           ))}
         </div>

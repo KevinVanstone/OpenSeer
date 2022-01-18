@@ -1,27 +1,25 @@
 import React, { Component } from "react";
 import "./DisplayNFTs.scss";
+import { Link } from "react-router-dom";
 
 const DisplayNFTs = (props) => {
-  // Destructure here?
-  console.log(props);
   const data = props.NFTObjects.nfts;
-  console.log(data);
+//   console.log(data);
   return (
     <div>
       {data && (
-        <div>
+        <div className="NFT__grid">
           {data.map((asset, index) => (
-            <div key={index}>
-              <h2>{asset.name}</h2>
-              <p>{asset.description}</p>
-
-              <img className="NFT__preview" src={asset.file_url} />
-            </div>
+            <Link to={`/search/${asset.contract_address}/${asset.token_id}`} key={asset.token_id}>
+              <div className="NFT" key={index}>
+                <img className="NFT__preview" src={asset.file_url} />
+                <h2>{asset.name}</h2>
+                <p>{asset.description}</p>
+              </div>
+            </Link>
           ))}
         </div>
       )}
-
-      <p>This is basic text data from the DisplayNFTs Component</p>
     </div>
   );
 };
