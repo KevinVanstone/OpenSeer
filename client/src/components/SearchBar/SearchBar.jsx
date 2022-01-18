@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import DisplayNFTs from "../DisplayNFTs/DisplayNFTs.jsx";
+import DisplayNFTSearch from "../DisplayNFTSearch/DisplayNFTSearch.jsx";
 
 var validator = require("validator");
 
@@ -14,10 +15,21 @@ const options = {
   },
 };
 
+const options2 = {
+  method: "GET",
+  url: "https://api.nftport.xyz/v0/search",
+  params: { text: "Bored Ape Yacht Club" },
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: "037cdd3e-56da-4996-abc3-14b16993e4d5",
+  },
+};
+
 class SearchBar extends Component {
   state = {
     addy: null,
     userData: null,
+    collectionData: null,
     imgurl1: null,
   };
 
@@ -54,7 +66,21 @@ class SearchBar extends Component {
           console.error(error);
         });
     } else {
-      console.log("ETH address INVALID!");
+      console.log("ETH address INVALID - searching for collections instead!");
+      axios
+        .request(options2)
+        .then((response) => {
+          const data = response.data;
+          console.log("The collection data returned:", data);
+          this.setState({
+            collectionData: data,
+            addy: addyToSearch,
+          });
+          console.log(this.state);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
     }
   };
 
@@ -71,6 +97,9 @@ class SearchBar extends Component {
         </form>
         {this.state.userData && (
           <DisplayNFTs NFTObjects={this.state.userData} />
+        )}
+        {this.state.collectionData && (
+          <DisplayNFTSearch NFTObjects={this.state.collectionData} />
         )}
       </div>
     );

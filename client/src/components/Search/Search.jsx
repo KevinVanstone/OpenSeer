@@ -40,29 +40,29 @@ class Search extends Component {
       }
 
       // Function to search for wallet address
-  walletSearch = (event) => {
-    event.preventDefault();
+  // walletSearch = (event) => {
+  //   event.preventDefault();
 
-    // Assign variable to target the form contents
-    const data = event.target;
-    const addyToSearch = data.search.value;
-    console.log("Looking up wallet addy:", addyToSearch);
+  //   // Assign variable to target the form contents
+  //   const data = event.target;
+  //   const addyToSearch = data.search.value;
+  //   console.log("Looking up wallet addy:", addyToSearch);
 
-    axios
-      .request(options)
-      .then((response) => {
-        const data = response.data;
-        console.log(data);
-        this.setState({
-          userData: data,
-          addy: addyToSearch,
-        });
-        console.log(this.state);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+  //   axios
+  //     .request(options)
+  //     .then((response) => {
+  //       const data = response.data;
+  //       console.log(data);
+  //       this.setState({
+  //         userData: data,
+  //         addy: addyToSearch,
+  //       });
+  //       console.log(this.state);
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
 
   render() {
     return (
