@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import DisplayNFTs from "../DisplayNFTs/DisplayNFTs.jsx";
 
+var validator = require("validator");
+
 const options = {
   method: "GET",
   url: "https://api.nftport.xyz/v0/accounts/0xeb74c032c15f12c6ecd4250205add29f0aa1fed6",
@@ -33,20 +35,27 @@ class SearchBar extends Component {
     const addyToSearch = data.search.value;
     console.log("Looking up wallet addy:", addyToSearch);
 
-    axios
-      .request(options)
-      .then((response) => {
-        const data = response.data;
-        console.log(data);
-        this.setState({
-          userData: data,
-          addy: addyToSearch,
+    // Check if the search parameter is a valid ETH wallet addy
+    if (validator.isEthereumAddress(addyToSearch)) {
+      console.log("ETH address valid! Assets pending...");
+
+      axios
+        .request(options)
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          this.setState({
+            userData: data,
+            addy: addyToSearch,
+          });
+          console.log(this.state);
+        })
+        .catch((error) => {
+          console.error(error);
         });
-        console.log(this.state);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    } else {
+      console.log("ETH address INVALID!");
+    }
   };
 
   render() {

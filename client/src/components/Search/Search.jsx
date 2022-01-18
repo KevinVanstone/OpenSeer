@@ -15,7 +15,7 @@ const options = {
   };
 
 
-class Home extends Component {
+class Search extends Component {
     state = {
         addy: null,
         userData: null,
@@ -74,4 +74,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Search;

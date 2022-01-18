@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header.jsx";
-import Home from "./components/Home/Home.jsx";
+import Search from "./components/Search/Search.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import About from "./components/About/About.jsx";
 import "./App.css";
@@ -13,7 +13,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/search" element={<Search />} />
         <Route path="/about" element={<About />} />
         {/* <Route path="/collection" element={<Collection />} /> */}
         {/* <Route path="/slideshow" element={<Slideshow />} /> */}
