@@ -1,14 +1,18 @@
 .NFT {
-  background-color: aqua;
+border-style: solid;
   margin: 1rem;
   padding: 1rem;
   max-width: 18.75rem;
+  display: flex;
+    flex-wrap: wrap;
   &__preview {
-    max-width: 6.25rem;
-    max-height: 6.25rem;
+    max-width: 100%;
   }
   &__grid {
     display: flex;
     flex-wrap: wrap;
+  }
+  &__title {
+      width: 100%;
   }
 }

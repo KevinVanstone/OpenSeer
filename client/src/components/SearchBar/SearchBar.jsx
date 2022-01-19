@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import DisplayNFTs from "../DisplayNFTs/DisplayNFTs.jsx";
 import DisplayNFTSearch from "../DisplayNFTSearch/DisplayNFTSearch.jsx";
+import "./SearchBar.scss";
 
 var validator = require("validator");
 
 const options = {
-//   method: "GET",
-//   url: "https://api.nftport.xyz/v0/accounts/0xeb74c032c15f12c6ecd4250205add29f0aa1fed6",
+  //   method: "GET",
+  //   url: "https://api.nftport.xyz/v0/accounts/0xeb74c032c15f12c6ecd4250205add29f0aa1fed6",
   params: { chain: "ethereum" },
   headers: {
     "Content-Type": "application/json",
@@ -48,8 +49,8 @@ class SearchBar extends Component {
     if (validator.isEthereumAddress(addyToSearch)) {
       console.log("ETH address valid! Assets pending...");
 
-      
-      axios.get(`https://api.nftport.xyz/v0/accounts/${addyToSearch}`, options)
+      axios
+        .get(`https://api.nftport.xyz/v0/accounts/${addyToSearch}`, options)
         .then((response) => {
           const data = response.data;
           console.log(data);
@@ -64,9 +65,9 @@ class SearchBar extends Component {
         });
     } else {
       console.log("ETH address INVALID - searching for collections instead!");
-      
-      
-      axios.get(`https://api.nftport.xyz/v0/search?text=${addyToSearch}`, options2)
+
+      axios
+        .get(`https://api.nftport.xyz/v0/search?text=${addyToSearch}`, options2)
         .then((response) => {
           const data = response.data;
           console.log("The collection data returned:", data);
@@ -84,8 +85,12 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
-        <form className="wallet-search" onSubmit={this.walletSearch}>
+      <div className="search">
+        <p className="search__prompt">
+          Enter your Ethereum wallet address or search for your favorite NFT,
+          artist, or collection to get started!
+        </p>
+        <form className="search__form" onSubmit={this.walletSearch}>
           <input
             id="search"
             className="header__search-bar"

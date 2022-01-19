@@ -19,7 +19,6 @@ class Search extends Component {
   render() {
     return (
       <div>
-        Enter your Ethereum wallet adress to get started!
         <SearchBar />
       </div>
     );
