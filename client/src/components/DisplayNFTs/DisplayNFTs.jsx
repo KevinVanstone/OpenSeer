@@ -11,7 +11,6 @@ const DisplayNFTs = (props) => {
         <div className="NFT__grid">
           {data.map((asset, index) => (
             <Link to={`/search/${asset.contract_address}/${asset.token_id}`} key={asset.token_id} state={asset}>
-                {/* // <Link to ="/search/test" state={asset}> */}
               <div className="NFT" key={index}>
                 <img className="NFT__preview" src={asset.file_url} />
                 <h2>{asset.name}</h2>
