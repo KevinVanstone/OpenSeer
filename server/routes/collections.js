@@ -29,8 +29,14 @@ collectionRoute.post("/", (req, res) => {
   // Establish NFT collection object
   const collectionObject = readFile();
   console.log("POST request received!");
-  res.status(200).send(collectionObject);
-});
 
+  if (req.body) {
+    let data = req.body;
+    console.log("Request body received:", data);
+    collectionObject.push(data);
+    writeFile(collectionObject);
+    res.status(200).send(collectionObject);
+  } else console.log("No request body received! Try again.");
+});
 
 module.exports = collectionRoute;

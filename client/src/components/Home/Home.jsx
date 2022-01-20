@@ -11,7 +11,7 @@ class Home extends Component {
                     <Link to="/search">
                    <h1>Search</h1>
                    </Link>
-                   <Link to="/collections">
+                   <Link to="/collection">
                    <h1>Collections</h1>
                    </Link> 
                    <Link to="/slideshow">

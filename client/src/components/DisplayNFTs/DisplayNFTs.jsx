@@ -5,7 +5,7 @@ import likeIcon from "../../assets/icons/likes.svg";
 
 const DisplayNFTs = (props) => {
   const data = props.NFTObjects.nfts;
-  //   console.log(data);
+    console.log(data);
   return (
     <div>
       {data && (
