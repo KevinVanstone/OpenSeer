@@ -20,7 +20,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
           {/* <Route path="/search/test" element={<NFTDetails />} /> */}
-          <Route path="/search/:NFTAddy/:NFTID" element={<NFTDetails />} />  
+          <Route path="/search/:nftID" element={<NFTDetails />} />
           <Route path="/collection" element={<Collection />} />
           {/* <Route path="/slideshow" element={<Slideshow />} /> */}
           {/* <Route path="/profile" element={<Profile />} /> */}

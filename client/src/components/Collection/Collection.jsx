@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-
-
 class Collection extends Component {
   state = {
     collectionData: null,
@@ -11,15 +9,15 @@ class Collection extends Component {
 
   componentDidMount() {
     axios
-    .get(`http://localhost:8080/collections/`)
-    .then((response) => {
-      console.log("Collection retrieved:", response.data);
-      this.setState({
-        collectionData: response.data
-    });
-    })
-    .catch((err) => console.log(err));
-}
+      .get(`http://localhost:8080/collections/`)
+      .then((response) => {
+        console.log("Collection retrieved:", response.data);
+        this.setState({
+          collectionData: response.data,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
 
   render() {
     const data = this.state.collectionData;
@@ -29,7 +27,7 @@ class Collection extends Component {
           <div className="NFT__grid">
             {data.map((asset, index) => (
               <Link
-                to={`/search/${asset.contract_address}/${asset.token_id}`}
+                to={`/search/${asset.id}`}
                 key={asset.token_id}
                 state={asset}
               >

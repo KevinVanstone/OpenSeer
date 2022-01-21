@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import "./NFTDetails.scss";
 import likeIcon from "../../assets/icons/likes.svg";
 import axios from "axios";
+const { v4: uuid } = require("uuid");
 
 function NFTDetails() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function NFTDetails() {
     console.log(asset);
 
     let nftToCollect = {
+      id: uuid(), 
       file_url: asset.file_url,
       name: asset.name,
       description: asset.description,

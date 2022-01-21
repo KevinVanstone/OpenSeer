@@ -1,25 +1,10 @@
 [
   {
-    "file_url": "https://rarible.mypinata.cloud/ipfs/QmWUpgvfRY1PLQ7ZehAsoMz9nptKde1huidWbqz5Nxd3gi",
-    "name": "BTC Keys",
-    "description": "\"I used to put these logos on neighborhood ATMs. Repurposing banking materials has remained a theme in my work. I like the idea of using soon-to-be extinct items to help spread the new cryptocurrency movement.\" - Cryptograffiti",
-    "token_id": "11",
-    "contract_address": "0x73da73ef3a6982109c4d5bdb0db9dd3e3783f313",
-    "creator_address": "0x53f46bfbecb075b4feb3bce6828b9095e630d371"
-  },
-  {
-    "file_url": "https://rarible.mypinata.cloud/ipfs/QmapPPriHScfJYpWQ4df5CpUJdwhBCRhdRWtv1c4FtHBv7/nft.jpg",
-    "name": "COLORGRAPHS ii #6",
-    "description": "",
-    "token_id": "6",
-    "contract_address": "0xcefd5b76dcd55a53cd12f6f7753391294f8357c5",
-    "creator_address": "0x18f103faa3b1614b14fa3b7e93899bcba4c6761e"
-  },
-  {
-    "file_url": "https://lh3.googleusercontent.com/WmPvRZ25sGkfsstElk6uUB1dwHYN-S8_nUXHo9tJCzUjM_F5KzkoQIE61kMnstzZ3zyltUF_IDNtEFyVkJB9H-cE-PzNSLf89---Mg",
-    "name": "Cosmic Zxdiac - Libra",
-    "description": "💫",
-    "token_id": "80494307024529346018053650490912529916739680814770830097664395874570998907168",
+    "id": "380068f1-d97f-4bf7-92d4-7c330affc54f",
+    "file_url": "https://lh3.googleusercontent.com/exHrsVszHnzKx4z0IMALS3SkiA_GxSSyqclPKASQ-me0HDxf6uB33gNX3EXzYLJre3s36JWQtJoc1iDWCC5s6G7EcKP3Uma2gd1wbQ",
+    "name": "Minimxlist Ghxst",
+    "description": "Based on an early sketch of Ghxsts. ",
+    "token_id": "80494307024529346018053650490912529916739680814770830097664395766818859384898",
     "contract_address": "0x495f947276749ce646f68ac8c248420045cb7b5e",
     "creator_address": "0xb1f629cb1b6841e5ac98aa5b1cffab1b6c88d8b7"
   }
