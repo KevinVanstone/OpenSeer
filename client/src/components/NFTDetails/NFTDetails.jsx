@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { useLocation } from "react-router-dom";
 import "./NFTDetails.scss";
 import likeIcon from "../../assets/icons/likes.svg";
+import deleteIcon from "../../assets/icons/icon-delete.svg";
+
 import axios from "axios";
 const { v4: uuid } = require("uuid");
 
@@ -10,12 +12,12 @@ function NFTDetails() {
   console.log(location);
   const asset = location.state;
 
-  function CollectNFT() {
-    console.log("Button has been clicked!");
+  function collectNFT() {
+    console.log("<3 Button has been clicked!");
     console.log(asset);
 
     let nftToCollect = {
-      id: uuid(), 
+      id: uuid(),
       file_url: asset.file_url,
       name: asset.name,
       description: asset.description,
@@ -36,6 +38,18 @@ function NFTDetails() {
       .catch((err) => console.log(err));
   }
 
+  function deleteNFT(id) {
+    console.log("Delete button clicked! ID:", id);
+    console.log(asset);
+
+    axios
+      .delete(`http://localhost:8080/collections/${id}`)
+      .then((response) => {
+        console.log("NFT ID:", id, "deleted!");
+      })
+      .catch((err) => console.log(err));
+  }
+
   console.log(location);
   return (
     <div>
@@ -43,9 +57,13 @@ function NFTDetails() {
         <h1>{asset.name}</h1>
         <img className="NFT-details__preview" src={asset.file_url} />
         <img className="NFT-details__preview" src={asset.cached_file_url} />
-        <button onClick={CollectNFT}>
+        <button onClick={collectNFT}>
           <img className="NFT__preview" src={likeIcon} />
           <p>Add to collection</p>
+        </button>
+        <button onClick={() => deleteNFT(location.state.id)}>
+          <img className="NFT__preview" src={deleteIcon} />
+          <p>Remove from collection</p>
         </button>
 
         <p>{asset.description}</p>
