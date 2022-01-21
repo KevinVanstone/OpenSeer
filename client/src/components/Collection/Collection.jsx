@@ -21,13 +21,14 @@ class Collection extends Component {
 
   render() {
     const data = this.state.collectionData;
+    console.log(data);
     return (
       <div>
         {data && (
           <div className="NFT__grid">
             {data.map((asset, index) => (
               <Link
-                to={`/search/${asset.id}`}
+                to={`/collection/${asset.id}`}
                 key={asset.token_id}
                 state={asset}
               >
@@ -48,14 +49,15 @@ class Collection extends Component {
 
 const DisplayNFTs = (props) => {
   const data = props.NFTObjects.nfts;
-  console.log(data);
+  console.log("Data on collections page:", data);
+
   return (
     <div>
       {data && (
         <div className="NFT__grid">
           {data.map((asset, index) => (
             <Link
-              to={`/search/${asset.contract_address}/${asset.token_id}`}
+              to={`/collection/${asset.contract_address}/${asset.token_id}`}
               key={asset.token_id}
               state={asset}
             >
