@@ -2,14 +2,10 @@ import React, { Component } from "react";
 import "./DisplayNFTs.scss";
 import { Link } from "react-router-dom";
 import likeIcon from "../../assets/icons/likes.svg";
-import { useLocation } from "react-router-dom";
 
 const DisplayNFTs = (props) => {
   const data = props.NFTObjects.nfts;
-  console.log(data);
-
-  const location = useLocation();
-  console.log(location);
+  //   console.log(data);
   return (
     <div>
       {data && (
@@ -22,10 +18,11 @@ const DisplayNFTs = (props) => {
             >
               <div className="NFT" key={index}>
                 <h2>{asset.name}</h2>
-                <img className="NFT__preview" src={asset.file_url} />
+                <img className="NFT__preview" src={asset.file_url} />                
 
                 <p>{asset.description}</p>
               </div>
+              
             </Link>
           ))}
         </div>
