@@ -7,10 +7,13 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
+        <a href="/">
         <img className="header__logo" src={Logo} alt="Open Seer" />
-        
+        </a>
         <div className="header__nav">
+        <a href="/search">
         <p>Search</p>
+        </a>
         <p>Profile</p>
         </div>
       </header>

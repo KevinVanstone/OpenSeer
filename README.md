@@ -68,3 +68,63 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# README (WIP): Open Seer
+
+Open Seer is a blockchain explorer tool that allows users to
+search the Ethereum network for any wallet address or text string,
+returning the associated data. Any valid ETH wallet address will
+return the NFTs within that wallet. Any other text string will 
+return a search of that string across assets on the Ethereum network
+as provided by the NFT Port API. 
+## Acknowledgements
+
+A special thank you to the teachers and teaching assistants at
+Brainstation. This app is only possible thank to your efforts in
+the class room, and after hours during endless days of Open Studio. 
+
+Thanks DM, KB, MB, and SS. 
+## Authors
+
+By Kevin Vanstone (https://github.com/KevinVanstone)
+
+## API Reference
+
+#### Get all items
+
+```http
+  GET /api/items
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. Your API key |
+
+#### Get item
+
+```http
+  GET /api/items/${id}
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. Id of item to fetch |
+
+#### add(num1, num2)
+
+Takes two numbers and returns the sum.
+
+
+## Features
+
+- Ethereum network search across all wallets
+- Previews of NFTs found matching the search string or wallet
+- Ability to see additional NFT details and add your own notes
+and metadata
+- Allows for users to create collections of the NFTs found and 
+displayed using the search feature. 
+- Slideshow mode allows users to preview their collections
+(without owning said NFT)
+
+
