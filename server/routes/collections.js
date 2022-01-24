@@ -57,4 +57,25 @@ collectionRoute.delete("/:nftID", (req, res) => {
   }
 });
 
+// Route 4: POST to existing collection item /
+collectionRoute.post("/:nftID", (req, res) => {
+  const collectionObject = readFile();
+  const nftToUpdate = collectionObject.find(
+    (nftToUpdate) => nftToUpdate.id === req.params.nftID
+  );
+
+  if (!nftToUpdate) {
+    return res.status(404).send("Cannot find NFT requested to add note to");
+  } else {
+    console.log(nftToUpdate);
+    console.log(req.body.note);
+
+    nftToUpdate.note = req.body.note;
+    console.log(nftToUpdate);
+
+    writeFile(collectionObject);
+    return res.status(200).json(nftToUpdate);
+  }
+});
+
 module.exports = collectionRoute;
