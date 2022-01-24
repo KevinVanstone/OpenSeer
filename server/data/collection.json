@@ -16,5 +16,32 @@
     "token_id": "31781",
     "contract_address": "0xb932a70a57673d89f4acffbe830e8ed7f75fb9e0",
     "creator_address": "0x9e1f34e66ae2171b7ccb8e6bc05fd05149e2c938"
+  },
+  {
+    "id": "a084244f-95b0-4564-bf70-ff50f150a077",
+    "file_url": "https://rarible.mypinata.cloud/ipfs/QmYFw2vtKjRK8vpwpsBTmwCrj6GbywudzEAKc3dze8rhqg",
+    "name": "Merch Token",
+    "description": "Manufactured by the International Space Security Administration.",
+    "token_id": "58",
+    "contract_address": "0x236672ed575e1e479b8e101aeeb920f32361f6f9",
+    "creator_address": "0x21ff1ac88a4a7c07c7573132f976d05b259632ee"
+  },
+  {
+    "id": "b22df717-a06f-490f-94d4-7b3968a4b42e",
+    "file_url": "https://lh3.googleusercontent.com/Dl16SwK9HwhYI0nV-sb1fTvM78uupzwrV-MBF044XGhqYpTFZd8agt_ZOoAIDnnZ2UjN4gSlKvRL6Ueeq6mOaZYxYDNwNOnLuRAwmA",
+    "name": "Cosmic Zxdiac - Sagittarius",
+    "description": "💫",
+    "token_id": "80494307024529346018053650490912529916739680814770830097664395980124115173670",
+    "contract_address": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+    "creator_address": "0xb1f629cb1b6841e5ac98aa5b1cffab1b6c88d8b7"
+  },
+  {
+    "id": "28ab6126-8b6f-434e-9d52-e0d7c641e277",
+    "file_url": "https://lh3.googleusercontent.com/WmPvRZ25sGkfsstElk6uUB1dwHYN-S8_nUXHo9tJCzUjM_F5KzkoQIE61kMnstzZ3zyltUF_IDNtEFyVkJB9H-cE-PzNSLf89---Mg",
+    "name": "Cosmic Zxdiac - Libra",
+    "description": "💫",
+    "token_id": "80494307024529346018053650490912529916739680814770830097664395874570998907168",
+    "contract_address": "0x495f947276749ce646f68ac8c248420045cb7b5e",
+    "creator_address": "0xb1f629cb1b6841e5ac98aa5b1cffab1b6c88d8b7"
   }
 ]
