@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Header.scss";
 import Logo from "../../assets/images/seer.jpg";
-import SearchBar from "../SearchBar/SearchBar.jsx";
 
 class Header extends Component {
   render() {

@@ -13,8 +13,8 @@ class Home extends Component {
           <Link to="/collection">
             <h1>Collection</h1>
           </Link>
-          <Link to="/slideshow">
-            <h1>Slideshow</h1>
+          <Link to="/gallery">
+            <h1>Gallery</h1>
           </Link>
           <Link to="/about">
             <h1>About Open Seer</h1>

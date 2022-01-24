@@ -50,13 +50,31 @@ function NFTDetails() {
       .catch((err) => console.log(err));
   }
 
+  function saveNFTNote(event) {
+    event.preventDefault();
+    console.log("Save note button clicked!");
+
+    const data = event.target;
+    console.log(data);
+    const note = data.note.value;
+    console.log(note);
+
+
+    // axios
+    //   .delete(`http://localhost:8080/collections/${id}`)
+    //   .then((response) => {
+    //     console.log("NFT ID:", id, "deleted!");
+    //   })
+    //   .catch((err) => console.log(err));
+  }
+
   console.log(location);
   return (
     <div>
-      <div className="NFT-details">
+      <div className="NFT">
         <h1>{asset.name}</h1>
-        <img className="NFT-details__preview" src={asset.file_url} />
-        <img className="NFT-details__preview" src={asset.cached_file_url} />
+        <img className="NFT__preview" src={asset.file_url} />
+        <img className="NFT__preview" src={asset.cached_file_url} />
         <button onClick={collectNFT}>
           <img className="NFT__preview" src={likeIcon} />
           <p>Add to collection</p>
@@ -69,7 +87,15 @@ function NFTDetails() {
         <p>{asset.description}</p>
         <p>Contract address: {asset.contract_address}</p>
         <p>Creator address {asset.creator_address}</p>
+          {/* <div className="NFT__note">
+          <form className="search__form" onSubmit={saveNFTNote}>
+            <label for="note" className="NFT__note-label">Leave a note</label>
+            <input className="NFT__note-input" id="note" type="text" name="note" placeholder="Might buy soon..."/>
+            <button className="NFT__note-btn" onClick={saveNFTNote}>Save note</button>
+            </form>
+          </div> */}
       </div>
+          
     </div>
   );
 }

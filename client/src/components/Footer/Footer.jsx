@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Footer.scss";
-import SearchBar from "../SearchBar/SearchBar.jsx";
 import Logo from "../../assets/images/seer.jpg";
 
 class Footer extends Component {
@@ -18,8 +17,8 @@ class Footer extends Component {
           <a href="/collection">
             <p>Collection</p>
           </a>
-          <a href="/slideshow">
-            <p>Slideshow</p>
+          <a href="/gallery">
+            <p>Gallery</p>
           </a>
         </div>
       </footer>

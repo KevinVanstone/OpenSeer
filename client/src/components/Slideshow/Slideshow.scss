@@ -8,9 +8,31 @@
 
 .NFT__slideshow {
   width: 1000px;
-  height: 600px;
+  max-height: 100vh;
   border-radius: 10px;
-    // max-width: 100%;
+    max-width: 100%;
+}
+
+.right-arrow {
+  position: absolute;
+  bottom: 25%;
+  right: 32px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  color: black;
+}
+
+.left-arrow {
+  position: absolute;
+  bottom: 25%;
+  left: 32px;
+  font-size: 3rem;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  color: white;
 }
 
 

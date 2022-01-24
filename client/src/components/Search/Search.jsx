@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import SearchBar from "../SearchBar/SearchBar.jsx";
-import axios from "axios";
 
 
 class Search extends Component {

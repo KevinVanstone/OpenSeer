@@ -1,7 +1,7 @@
-import React, { useState, Component } from "react";
+import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "./Slideshow.scss";
+import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from "react-icons/fa";
 
 class Slideshow extends Component {
   state = {
@@ -26,12 +26,7 @@ class Slideshow extends Component {
     const data = this.state.collectionData;
     console.log(data);
 
-    const slideClicked = () => {
-      console.log("Slide button clicked!");
-      // console.log(this.state.count);
-
-      // this.state.setCurrent(this.state.count === data.length - 1 ? 0 : this.state.count +1)
-
+    const nextSlideClicked = () => {
       if (this.state.count === data.length - 1) {
         this.setState({
           count: 0,
@@ -43,12 +38,32 @@ class Slideshow extends Component {
       }
       console.log(this.state.count);
     };
+
+    const prevSlideClicked = () => {
+      if (this.state.count === data.length - 1) {
+        this.setState({
+          count: 0,
+        });
+      } else {
+        this.setState({
+          count: this.state.count + 1,
+        });
+      }
+      console.log(this.state.count);
+    };
+
     return (
       <div>
         {data && (
           <div className="NFT__grid">
-            <button onClick={slideClicked}>Next Button</button>
-
+            <FaArrowAltCircleLeft
+              className="left-arrow"
+              onClick={prevSlideClicked}
+            />
+            <FaArrowAltCircleRight
+              className="right-arrow"
+              onClick={nextSlideClicked}
+            />
             {data.map((asset, index) => (
               <div>
                 {index === this.state.count && (
