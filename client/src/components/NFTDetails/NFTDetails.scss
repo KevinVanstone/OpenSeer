@@ -2,6 +2,8 @@
   margin: 1rem;
   padding: 1rem;
   display: flex;
+  flex-direction: column;
+
   flex-wrap: wrap;
   &__preview {
     max-width: 100%;
@@ -9,7 +11,11 @@
   }
   &__note {
     display: flex;
-    flex-wrap: nowrap;
     flex-direction: column;
+    flex-wrap: wrap;
+  }
+  &__note-input {
+    max-width: 70%;
+    height: 4rem;
   }
 }

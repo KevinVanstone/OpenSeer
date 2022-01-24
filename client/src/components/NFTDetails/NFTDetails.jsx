@@ -88,13 +88,15 @@ function NFTDetails() {
         <p>{asset.description}</p>
         <p>Contract address: {asset.contract_address}</p>
         <p>Creator address {asset.creator_address}</p>
-          <div className="NFT__note">
+          
           <form className="search__form" onSubmit={saveNFTNote}>
+          <div className="NFT__note">
             <label for="note" className="NFT__note-label">Leave a note</label>
             <input className="NFT__note-input" id="note" type="text" name="note" placeholder="Might buy soon..."/>
             {/* <button className="NFT__note-btn" onClick={saveNFTNote}>Save note</button> */}
+            </div>
             </form>
-          </div>
+          
       </div>
           
     </div>
