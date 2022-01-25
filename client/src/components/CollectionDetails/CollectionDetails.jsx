@@ -33,14 +33,11 @@ function CollectionDetails() {
     event.preventDefault();
     console.log("Save note button clicked!");
 
-    
-
     const data = event.target;
     const note = data.note.value;
     console.log("The note looks like:", note);
 
     setNote(note);
-
 
     let id = location.state.id;
     // asset.note = note;
@@ -76,10 +73,10 @@ function CollectionDetails() {
         <p className="NFT__info">Creator address {asset.creator_address}</p>
         <p className="NFT__info">Notes: {newNote}</p>
 
-        <form className="search__form" onSubmit={saveNFTNote}>
+        <form className="search__form" id="addNote" onSubmit={saveNFTNote}>
           <div className="NFT__note">
             <label for="note" className="NFT__note-label">
-              Leave a note
+              Save notes on item
             </label>
             <input
               className="NFT__note-input"
@@ -88,7 +85,7 @@ function CollectionDetails() {
               name="note"
               placeholder="Might buy soon..."
             />
-            {/* <button className="NFT__note-btn" onClick={saveNFTNote}>Save note</button> */}
+            <button className="NFT__note-btn" type="submit" form="addNote">Save note</button>
           </div>
         </form>
       </div>

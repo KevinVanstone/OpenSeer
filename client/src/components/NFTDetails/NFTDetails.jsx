@@ -74,23 +74,6 @@ function NFTDetails() {
         <p className="NFT__info">{asset.description}</p>
         <p className="NFT__info">Contract address: {asset.contract_address}</p>
         <p className="NFT__info">Creator address {asset.creator_address}</p>
-
-
-        <form className="search__form" onSubmit={saveNFTNote}>
-          <div className="NFT__note">
-            <label for="note" className="NFT__note-label">
-              Leave a note
-            </label>
-            <input
-              className="NFT__note-input"
-              id="note"
-              type="text"
-              name="note"
-              placeholder="Might buy soon..."
-            />
-            {/* <button className="NFT__note-btn" onClick={saveNFTNote}>Save note</button> */}
-          </div>
-        </form>
       </div>
     </div>
   );

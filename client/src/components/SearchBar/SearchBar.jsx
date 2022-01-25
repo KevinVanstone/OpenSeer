@@ -29,6 +29,7 @@ class SearchBar extends Component {
     userData: null,
     collectionData: null,
     imgurl1: null,
+    isLoading: false,
   };
 
   componentDidUpdate(prevProps, props) {
@@ -38,6 +39,9 @@ class SearchBar extends Component {
 
   // Function to search for wallet address
   walletSearch = (event) => {
+    this.setState({
+      isLoading: true,
+    });
     event.preventDefault();
 
     // Assign variable to target the form contents
@@ -74,6 +78,7 @@ class SearchBar extends Component {
           this.setState({
             collectionData: data,
             addy: addyToSearch,
+            isLoading: false,
           });
           console.log(this.state);
         })
@@ -81,6 +86,7 @@ class SearchBar extends Component {
           console.error(error);
         });
     }
+
   };
 
   render() {
@@ -98,6 +104,9 @@ class SearchBar extends Component {
             placeholder="Search"
           />
         </form>
+        {this.state.isLoading && (
+          <p>Loading...please wait</p>
+        )}
         {this.state.userData && (
           <DisplayNFTs NFTObjects={this.state.userData} />
         )}

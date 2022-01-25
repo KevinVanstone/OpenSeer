@@ -27,7 +27,7 @@
     "token_id": "35961915435532533805478878680155927419091492961493010708952927574777569214575",
     "contract_address": "0x495f947276749ce646f68ac8c248420045cb7b5e",
     "creator_address": "0x4f81b90b3d62592cdc20ed713503c608fd1eb644",
-    "note": "Hell yeah"
+    "note": "Updated note from btn"
   },
   {
     "id": "7dfd1420-5066-4868-b742-06621793d66c",
@@ -38,5 +38,15 @@
     "contract_address": "0xec8b069cb770dce8094a12e62fea8b6bf9891be1",
     "creator_address": "0xd10df3fe5b07e5560087b753b1d8b5a7ae8766ac",
     "note": "This is a test note"
+  },
+  {
+    "id": "b18bebc3-f542-4dd7-af67-337491a29915",
+    "file_url": "https://arweave.net/zWfIA4CYl6Bf1CgX3WOY-WnPAbnDCFHzjiyccHZ3ykY",
+    "name": "aspiring chad",
+    "description": "“For Fortune Magazine’s 2021 August/September issue focused on cryptocurrency and defi, I was honored with the unique opportunity to design the magazine’s cover and dedicate this to the crypto twitter community which has given so much to me. Fortune and I will be donating 50% of the proceeds to charity.” - pplpleasr",
+    "token_id": "1",
+    "contract_address": "0x47e22659d9ae152975e6cbfa2eed5dc8b75ac545",
+    "creator_address": "0x19eb7ffdcd670ca917110bd032463120a5e58c8e",
+    "note": "Updated note - will this work without the button?"
   }
 ]
