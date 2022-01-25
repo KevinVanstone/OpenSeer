@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./DisplayNFTs.scss";
 import { Link } from "react-router-dom";
-import likeIcon from "../../assets/icons/likes.svg";
 
 const DisplayNFTs = (props) => {
   const data = props.NFTObjects.nfts;

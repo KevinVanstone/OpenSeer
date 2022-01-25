@@ -5,6 +5,7 @@ import About from "./components/About/About.jsx";
 import Home from "./components/Home/Home.jsx";
 import Collection from "./components/Collection/Collection.jsx";
 import NFTDetails from "./components/NFTDetails/NFTDetails.jsx";
+import CollectionDetails from "./components/CollectionDetails/CollectionDetails.jsx";
 import Slideshow from "./components/Slideshow/Slideshow.jsx";
 
 import "./App.css";
@@ -22,7 +23,7 @@ function App() {
           <Route path="/search" element={<Search />} />
           <Route path="/about" element={<About />} />
           <Route path="/search/:NFTAddy/:NFTID" element={<NFTDetails />} />
-          <Route path="/collection/:NFTID" element={<NFTDetails />} />
+          <Route path="/collection/:NFTID" element={<CollectionDetails />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/gallery" element={<Slideshow />} />
 

@@ -1,40 +1,30 @@
-import React, { Component } from "react";
-import { useLocation, Link } from "react-router-dom";
-import "./NFTDetails.scss";
-import likeIcon from "../../assets/icons/likes.svg";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./CollectionDetails.scss";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
-
 import axios from "axios";
-const { v4: uuid } = require("uuid");
 
-function NFTDetails() {
+function CollectionDetails() {
   const location = useLocation();
   console.log(location);
   const asset = location.state;
 
-  function collectNFT() {
-    console.log("<3 Button has been clicked!");
+  const [newNote, setNote] = useState("");
+  useEffect(() => {
+    // Update the document title using the browser API
+    // location.state.note = {note}
+    console.log("Testing useEffect!");
+  });
+
+  function deleteNFT(id) {
+    console.log("Delete button clicked! ID:", id);
     console.log(asset);
 
-    let nftToCollect = {
-      id: uuid(),
-      file_url: asset.file_url,
-      name: asset.name,
-      description: asset.description,
-      token_id: asset.token_id,
-      contract_address: asset.contract_address,
-      creator_address: asset.creator_address,
-      note: "",
-    };
-    console.log(nftToCollect);
-
     axios
-      .post(`http://localhost:8080/collections/`, nftToCollect)
+      .delete(`http://localhost:8080/collections/${id}`)
       .then((response) => {
-        console.log(
-          "Add to collection button clicked! Object sent: ",
-          nftToCollect
-        );
+        console.log("NFT ID:", id, "deleted!");
       })
       .catch((err) => console.log(err));
   }
@@ -43,12 +33,18 @@ function NFTDetails() {
     event.preventDefault();
     console.log("Save note button clicked!");
 
+    
+
     const data = event.target;
     const note = data.note.value;
     console.log("The note looks like:", note);
 
-    let id = location.state.id;
+    setNote(note);
 
+
+    let id = location.state.id;
+    // asset.note = note;
+    location.state.note = note;
     axios
       .post(`http://localhost:8080/collections/${id}`, { note })
       .then((response) => {
@@ -57,24 +53,28 @@ function NFTDetails() {
       .catch((err) => console.log(err));
   }
 
-  console.log(location);
+  console.log(asset);
   return (
     <div>
       <div className="NFT">
         <h1>{asset.name}</h1>
         <img className="NFT__preview" src={asset.file_url} />
         <img className="NFT__preview" src={asset.cached_file_url} />
+
         <Link to="/collection">
-        <button onClick={collectNFT}>
-          <img className="NFT__preview" src={likeIcon} />
-          <p>Add to collection</p>
-        </button>
+          <button
+            className="NFT__remove-btn"
+            onClick={() => deleteNFT(location.state.id)}
+          >
+            <img className="NFT__preview" src={deleteIcon} />
+            <p>Remove from collection</p>
+          </button>
         </Link>
 
         <p className="NFT__info">{asset.description}</p>
         <p className="NFT__info">Contract address: {asset.contract_address}</p>
         <p className="NFT__info">Creator address {asset.creator_address}</p>
-
+        <p className="NFT__info">Notes: {newNote}</p>
 
         <form className="search__form" onSubmit={saveNFTNote}>
           <div className="NFT__note">
@@ -96,4 +96,4 @@ function NFTDetails() {
   );
 }
 
-export default NFTDetails;
+export default CollectionDetails;
