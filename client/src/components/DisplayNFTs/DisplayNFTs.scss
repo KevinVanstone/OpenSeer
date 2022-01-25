@@ -4,7 +4,10 @@ border-style: solid;
   padding: 1rem;
   max-width: 18.75rem;
   display: flex;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
+  &__description {
+    margin: 0 1rem;
+  }
   &__preview {
     max-width: 100%;
   }

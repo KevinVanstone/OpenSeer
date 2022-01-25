@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 const DisplayNFTSearch = (props) => {
   const data = props.NFTObjects.search_results;
-  // console.log(data);
+  console.log(data);
   return (
     <div>
+      <p className="NFT__description">NFTs found on chain: </p>
       {data && (
         <div>
           {data.map((asset, index) => (
@@ -21,8 +22,6 @@ const DisplayNFTSearch = (props) => {
           ))}
         </div>
       )}
-
-      <p>This is basic text data from the DisplayNFTs Component</p>
     </div>
   );
 };

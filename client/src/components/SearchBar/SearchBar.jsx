@@ -61,6 +61,59 @@ class SearchBar extends Component {
           this.setState({
             userData: data,
             addy: addyToSearch,
+            isLoading: false,
+          });
+          console.log(this.state);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      console.log("ETH address INVALID - searching for collections instead!");
+
+      axios
+        .get(`https://api.nftport.xyz/v0/search?text=${addyToSearch}`, options2)
+        .then((response) => {
+          const data = response.data;
+          console.log("The collection data returned:", data);
+          this.setState({
+            collectionData: data,
+            addy: addyToSearch,
+            isLoading: false,
+          });
+          console.log(this.state);
+        })
+        .catch(function (error) {
+          console.error(error);
+        });
+    }
+
+  };
+
+  blockchainSearch = (event) => {
+    this.setState({
+      isLoading: true,
+    });
+    event.preventDefault();
+
+    // Assign variable to target the form contents
+    const data = event.target;
+    const addyToSearch = data.blockSearch.value;
+    console.log("Looking up wallet addy:", addyToSearch);
+
+    // Check if the search parameter is a valid ETH wallet addy
+    if (validator.isEthereumAddress(addyToSearch)) {
+      console.log("ETH address valid! Assets pending...");
+
+      axios
+        .get(`https://api.nftport.xyz/v0/accounts/${addyToSearch}`, options)
+        .then((response) => {
+          const data = response.data;
+          console.log(data);
+          this.setState({
+            userData: data,
+            addy: addyToSearch,
+            isLoading: false,
           });
           console.log(this.state);
         })
@@ -91,22 +144,41 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="search">
-        <p className="search__prompt">
-          Enter your Ethereum wallet address or search for your favorite NFT,
-          artist, or collection to get started!
-        </p>
-        <form className="search__form" onSubmit={this.walletSearch}>
+        <>
+        <div className="search">
+          <h1 className="search__hed">Open Seer</h1>
+        <h2 className="search__prompt">
+          Enter any Ethereum wallet address or search for your favorite NFT by
+          artist or collection to get started.
+        </h2>
+        <form className="search__form" id="nftSearch" onSubmit={this.walletSearch}>
           <input
             id="search"
-            className="header__search-bar"
+            className="search__input"
             type="text"
-            placeholder="Search"
+            placeholder="0x..."
           />
+          <button className="search__btn" type="submit" form="nftSearch">Search by ETH wallet</button>
+        </form>
+
+        <p className="search__label">
+          
+        </p>
+        <form className="search__form" id="nftSearch" onSubmit={this.blockchainSearch}>
+          <input
+            id="blockSearch"
+            className="search__input"
+            type="text"
+            placeholder="Bored Ape Yacht Club"
+          />
+          <button className="search__btn" type="submit" form="nftSearch">Search by NFT name</button>
         </form>
         {this.state.isLoading && (
           <p>Loading...please wait</p>
         )}
+        </div>
+        <div>
+        
         {this.state.userData && (
           <DisplayNFTs NFTObjects={this.state.userData} />
         )}
@@ -114,6 +186,7 @@ class SearchBar extends Component {
           <DisplayNFTSearch NFTObjects={this.state.collectionData} />
         )}
       </div>
+      </>
     );
   }
 }

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./NFTDetails.scss";
 import likeIcon from "../../assets/icons/likes.svg";
-import deleteIcon from "../../assets/icons/icon-delete.svg";
+
 
 import axios from "axios";
 const { v4: uuid } = require("uuid");
@@ -13,9 +13,8 @@ function NFTDetails() {
   const asset = location.state;
 
   function collectNFT() {
-    console.log("<3 Button has been clicked!");
-    console.log(asset);
-
+    // console.log("<3 Button has been clicked!");
+    // console.log(asset);
     let nftToCollect = {
       id: uuid(),
       file_url: asset.file_url,
@@ -26,8 +25,7 @@ function NFTDetails() {
       creator_address: asset.creator_address,
       note: "",
     };
-    console.log(nftToCollect);
-
+    // console.log(nftToCollect);
     axios
       .post(`http://localhost:8080/collections/`, nftToCollect)
       .then((response) => {
