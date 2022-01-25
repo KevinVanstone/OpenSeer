@@ -7,18 +7,18 @@ const DisplayNFTs = (props) => {
   //   console.log(data);
   return (
     <div>
-      <p className="NFT__description">NFTs found in wallet: </p>
+      <p className="NFTs__description">NFTs found in wallet: </p>
       {data && (
-        <div className="NFT__grid">
+        <div className="NFTs__container">
           {data.map((asset, index) => (
             <Link
               to={`/search/${asset.contract_address}/${asset.token_id}`}
               key={asset.token_id}
               state={asset}
             >
-              <div className="NFT" key={index}>
+              <div className="NFTs" key={index}>
                 <h2>{asset.name}</h2>
-                <img className="NFT__preview" src={asset.file_url} />                
+                <img className="NFTs__preview" src={asset.file_url} />                
 
                 <p>{asset.description}</p>
               </div>

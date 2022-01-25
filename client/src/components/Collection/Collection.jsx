@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import "./Collection.scss";
 
 class Collection extends Component {
   state = {
@@ -25,16 +26,16 @@ class Collection extends Component {
     return (
       <div>
         {data && (
-          <div className="NFT__grid">
+          <div className="collection__container">
             {data.map((asset, index) => (
               <Link
                 to={`/collection/${asset.id}`}
                 key={asset.token_id}
                 state={asset}
               >
-                <div className="NFT" key={index}>
+                <div className="collection" key={index}>
                   <h2>{asset.name}</h2>
-                  <img className="NFT__preview" src={asset.file_url} />
+                  <img className="collection__preview" src={asset.file_url} />
 
                   <p>{asset.description}</p>
                 </div>

@@ -2,7 +2,7 @@
 @use "../../../src/styles/partials/globals" as *;
 @use "../../../src/styles/partials/mixins" as *;
 
-.NFTs {
+.collection {
   border-style: solid;
   border-top: 0;
   border-left: 0;
@@ -30,5 +30,6 @@
     }
   }
   &__title {
+      // width: 100%;
   }
 }

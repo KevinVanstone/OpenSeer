@@ -90,7 +90,7 @@ class SearchBar extends Component {
 
   };
 
-  blockchainSearch = (event) => {
+  blockSearch = (event) => {
     this.setState({
       isLoading: true,
     });
@@ -98,8 +98,8 @@ class SearchBar extends Component {
 
     // Assign variable to target the form contents
     const data = event.target;
-    const addyToSearch = data.blockSearch.value;
-    console.log("Looking up wallet addy:", addyToSearch);
+    const addyToSearch = data.nftsearch.value;
+    console.log("Looking up string:", addyToSearch);
 
     // Check if the search parameter is a valid ETH wallet addy
     if (validator.isEthereumAddress(addyToSearch)) {
@@ -161,18 +161,17 @@ class SearchBar extends Component {
           <button className="search__btn" type="submit" form="nftSearch">Search by ETH wallet</button>
         </form>
 
-        <p className="search__label">
-          
+        {/* <p className="search__label">
         </p>
-        <form className="search__form" id="nftSearch" onSubmit={this.blockchainSearch}>
+        <form className="search__form" id="nftSearch" onSubmit={this.blockSearch}>
           <input
-            id="blockSearch"
+            id="nftsearch"
             className="search__input"
             type="text"
             placeholder="Bored Ape Yacht Club"
           />
           <button className="search__btn" type="submit" form="nftSearch">Search by NFT name</button>
-        </form>
+        </form> */}
         {this.state.isLoading && (
           <p>Loading...please wait</p>
         )}
