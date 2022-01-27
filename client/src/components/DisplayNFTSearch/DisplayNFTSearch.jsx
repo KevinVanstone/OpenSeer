@@ -9,20 +9,20 @@ const DisplayNFTSearch = (props) => {
     <div>
       <h2 className="NFT__description">NFTs found on chain: </h2>
       {data && (
-        <div className="NFT__grid">
-          {data.map((asset, index) => (
+        <div className="NFTs__container">
+        {data.map((asset, index) => (
             <Link
               to={`/search/${asset.contract_address}/${asset.token_id}`}
               key={asset.token_id}
               state={asset}
             >
               <div className="NFT" key={index}>
-                <h2>{asset.name}</h2>
+                <h2 className="NFT__title">{asset.name}</h2>
                 <img
                   className="NFT__preview"
                   src={asset.cached_file_url}
                 />
-                <p>{asset.description}</p>
+                <p className="NFT__description">{asset.description}</p>
               </div>
             </Link>
           ))}

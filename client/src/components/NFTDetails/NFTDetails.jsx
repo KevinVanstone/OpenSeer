@@ -58,13 +58,13 @@ function NFTDetails() {
   console.log(location);
   return (
     <div>
-      <div className="NFT">
+      <div className="item">
         <h1>{asset.name}</h1>
-        <img className="NFT__preview" src={asset.file_url} />
-        <img className="NFT__preview" src={asset.cached_file_url} />
+        <img className="item__preview" src={asset.file_url} />
+        <img className="item__preview" src={asset.cached_file_url} />
         <Link to="/collection">
-          <button className="NFT__collect-btn" onClick={collectNFT}>
-            <img className="NFT__preview" src={likeIcon} />
+          <button className="item__collect-btn" onClick={collectNFT}>
+            <img className="item__preview" src={likeIcon} />
             <p>Add to collection</p>
           </button>
         </Link>

@@ -17,10 +17,10 @@ const DisplayNFTs = (props) => {
               state={asset}
             >
               <div className="NFTs" key={index}>
-                <h2>{asset.name}</h2>
+                <h2 className="NFTs__title">{asset.name}</h2>
                 <img className="NFTs__preview" src={asset.file_url} />                
 
-                <p>{asset.description}</p>
+                <p className="NFTs__description">{asset.description}</p>
               </div>
               
             </Link>
