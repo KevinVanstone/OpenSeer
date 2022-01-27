@@ -67,12 +67,7 @@ collectionRoute.post("/:nftID", (req, res) => {
   if (!nftToUpdate) {
     return res.status(404).send("Cannot find NFT requested to add note to");
   } else {
-    console.log(nftToUpdate);
-    console.log(req.body.note);
-
     nftToUpdate.note = req.body.note;
-    console.log(nftToUpdate);
-
     writeFile(collectionObject);
     return res.status(200).json(nftToUpdate);
   }

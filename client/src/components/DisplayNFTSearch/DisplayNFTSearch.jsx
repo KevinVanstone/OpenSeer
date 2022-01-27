@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const DisplayNFTSearch = (props) => {
   const data = props.NFTObjects.search_results;
-  // console.log(data);
   return (
     <div>
       <h2 className="NFT__description">NFTs found on chain: </h2>

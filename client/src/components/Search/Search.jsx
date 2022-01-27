@@ -11,7 +11,6 @@ class Search extends Component {
 
       componentDidUpdate(prevProps, props) {
         const data = this.state;
-        console.log("The state has been updated to: ", data);
       }
 
 

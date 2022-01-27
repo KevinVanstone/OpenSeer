@@ -7,20 +7,12 @@ import axios from "axios";
 
 function CollectionDetails() {
   const location = useLocation();
-  console.log(location);
   const asset = location.state;
 
   const [newNote, setNote] = useState("");
-  useEffect(() => {
-    // Update the document title using the browser API
-    // location.state.note = {note}
-    console.log("Testing useEffect!");
-  });
+  useEffect(() => {});
 
   function deleteNFT(id) {
-    console.log("Delete button clicked! ID:", id);
-    console.log(asset);
-
     axios
       .delete(`http://localhost:8080/collections/${id}`)
       .then((response) => {
@@ -31,16 +23,11 @@ function CollectionDetails() {
 
   function saveNFTNote(event) {
     event.preventDefault();
-    console.log("Save note button clicked!");
-
     const data = event.target;
     const note = data.note.value;
-    console.log("The note looks like:", note);
-
     setNote(note);
 
     let id = location.state.id;
-    // asset.note = note;
     location.state.note = note;
     axios
       .post(`http://localhost:8080/collections/${id}`, { note })
@@ -50,16 +37,15 @@ function CollectionDetails() {
       .catch((err) => console.log(err));
   }
 
-  console.log(asset);
   return (
     <div>
       <div className="NFTCollected">
         <h1>{asset.name}</h1>
         {asset.file_url && (
-        <img className="NFTCollected__preview" src={asset.file_url} />
+          <img className="NFTCollected__preview" src={asset.file_url} />
         )}
         {asset.cached_file_url && (
-        <img className="NFTCollected__preview" src={asset.cached_file_url} />
+          <img className="NFTCollected__preview" src={asset.cached_file_url} />
         )}
         <Link to="/collection">
           <button
@@ -72,8 +58,12 @@ function CollectionDetails() {
         </Link>
 
         <p className="NFTCollected__info">{asset.description}</p>
-        <p className="NFTCollected__info">Contract address: {asset.contract_address}</p>
-        <p className="NFTCollected__info">Creator address {asset.creator_address}</p>
+        <p className="NFTCollected__info">
+          Contract address: {asset.contract_address}
+        </p>
+        <p className="NFTCollected__info">
+          Creator address {asset.creator_address}
+        </p>
         <p className="NFTCollected__info">Notes: {newNote}</p>
 
         <form className="search__form" id="addNote" onSubmit={saveNFTNote}>
@@ -88,7 +78,13 @@ function CollectionDetails() {
               name="note"
               placeholder="Might buy soon..."
             />
-            <button className="NFTCollected__note-btn" type="submit" form="addNote">Save note</button>
+            <button
+              className="NFTCollected__note-btn"
+              type="submit"
+              form="addNote"
+            >
+              Save note
+            </button>
           </div>
         </form>
       </div>

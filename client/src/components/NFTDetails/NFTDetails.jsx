@@ -8,12 +8,9 @@ const { v4: uuid } = require("uuid");
 
 function NFTDetails() {
   const location = useLocation();
-  console.log(location);
   const asset = location.state;
 
   function collectNFT() {
-    // console.log("<3 Button has been clicked!");
-    console.log(asset.cached_file_url);
     let nftToCollect = {
       id: uuid(),
       file_url: asset.file_url,
@@ -25,7 +22,6 @@ function NFTDetails() {
       creator_address: asset.creator_address,
       note: "",
     };
-    // console.log(nftToCollect);
     axios
       .post(`http://localhost:8080/collections/`, nftToCollect)
       .then((response) => {
@@ -39,12 +35,8 @@ function NFTDetails() {
 
   function saveNFTNote(event) {
     event.preventDefault();
-    console.log("Save note button clicked!");
-
     const data = event.target;
     const note = data.note.value;
-    console.log("The note looks like:", note);
-
     let id = location.state.id;
 
     axios

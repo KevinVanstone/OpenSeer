@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const DisplayNFTs = (props) => {
   const data = props.NFTObjects.nfts;
-  //   console.log(data);
   return (
     <div>
       <h2 className="NFTs__description">NFTs found in wallet: </h2>

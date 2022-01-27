@@ -12,7 +12,6 @@ class Collection extends Component {
     axios
       .get(`http://localhost:8080/collections/`)
       .then((response) => {
-        console.log("Collection retrieved:", response.data);
         this.setState({
           collectionData: response.data,
         });
@@ -22,7 +21,6 @@ class Collection extends Component {
 
   render() {
     const data = this.state.collectionData;
-    console.log(data);
     return (
       <div>
         {data && (

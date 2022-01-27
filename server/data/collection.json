@@ -29,22 +29,22 @@
     "note": ""
   },
   {
-    "id": "7f8ab02b-59f5-482b-83ab-7775179d8faf",
-    "file_url": "https://rarible.mypinata.cloud/ipfs/bafybeieblyejkri7z2bse7aesa2xfv6xprz7erg3jur6irhdfekdq2sq6u",
-    "name": "GigaChad #1",
-    "description": "I’m like you but",
-    "token_id": "53",
-    "contract_address": "0x5bb137ba6dcf1c4d8ad2d09ec4617eb33b77fa33",
-    "creator_address": "0xe8b20cd625aa5969a2f86bfd662870e7fdc8fe35",
-    "note": ""
-  },
-  {
     "id": "05837a4f-b01f-4727-819e-fcdae279db6a",
     "cached_file_url": "https://storage.googleapis.com/sentinel-nft/raw-assets/86837e39a5aac76f1040c136999b7fa18e47b46957280b63f24c69a4e9668122.png",
     "name": "Bored Ape Yacht Club",
     "description": "<p>✅  Official Bored Ape Yacht Club. Verified by Opensea.The Bored Ape Yacht Club is a collection of 10,000 unique Bored Ape NFTs— unique digital collectibles living on the Ethereum blockchain. Your Bored Ape doubles as your Yacht Club membership card, and grants access to members-only benefits, the first of which is access to THE BATHROOM, a collaborative graffiti board. Future areas and perks can be unlocked by the community through roadmap activation. Visit www.BoredApeYachtClub.com for more details.</p>",
     "token_id": "4320",
     "contract_address": "0x9201a886740d193e315f1f1b2b193321d6701d07",
+    "note": ""
+  },
+  {
+    "id": "93b219e7-8113-4777-bfce-f2e23e83e349",
+    "file_url": "https://www.slackerduckpond.com/assets/715.png",
+    "name": "Slacker Duck #715",
+    "description": "Each Slacker Duck is unique and programmatically generated from over 125 possible assets, such as expression, clothing, and more.",
+    "token_id": "715",
+    "contract_address": "0xec516efecd8276efc608ecd958a4eab8618c61e8",
+    "creator_address": "0x1db6001c072b373423136a814d918674c5f7c59b",
     "note": ""
   }
 ]

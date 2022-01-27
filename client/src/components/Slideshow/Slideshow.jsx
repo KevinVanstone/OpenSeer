@@ -24,7 +24,6 @@ class Slideshow extends Component {
 
   render() {
     const data = this.state.collectionData;
-    console.log(data);
 
     const nextSlideClicked = () => {
       if (this.state.count === data.length - 1) {
@@ -36,7 +35,6 @@ class Slideshow extends Component {
           count: this.state.count + 1,
         });
       }
-      console.log(this.state.count);
     };
 
     const prevSlideClicked = () => {
@@ -49,7 +47,6 @@ class Slideshow extends Component {
           count: this.state.count + 1,
         });
       }
-      console.log(this.state.count);
     };
 
     return (
