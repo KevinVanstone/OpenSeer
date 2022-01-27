@@ -68,8 +68,12 @@ class Slideshow extends Component {
               <div>
                 {index === this.state.count && (
                   <>
-                  <img className="NFT__slideshow" src={asset.file_url} />
-                  <img className="NFT__slideshow" src={asset.cached_file_url} />
+                  {asset.file_url && (
+                    <img className="NFT__slide" src={asset.file_url} />
+                  )}
+                  {asset.cached_file_url && (
+                  <img className="NFT__slide" src={asset.cached_file_url} />
+                  )}
                   </>
                 )}
               </div>

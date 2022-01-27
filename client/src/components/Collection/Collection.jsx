@@ -37,7 +37,7 @@ class Collection extends Component {
                   <h2>{asset.name}</h2>
                   <img className="collection__preview" src={asset.file_url} />
                   <img className="collection__preview" src={asset.cached_file_url} />
-                  <p>{asset.description}</p>
+                  <p className="collection__description">{asset.description}</p>
                 </div>
               </Link>
             ))}
@@ -47,33 +47,5 @@ class Collection extends Component {
     );
   }
 }
-
-// const DisplayNFTs = (props) => {
-//   const data = props.NFTObjects.nfts;
-//   console.log("Data on collections page:", data);
-
-//   return (
-//     <div>
-//       {data && (
-//         <div className="NFT__grid">
-//           {data.map((asset, index) => (
-//             <Link
-//               to={`/collection/${asset.contract_address}/${asset.token_id}`}
-//               key={asset.token_id}
-//               state={asset}
-//             >
-//               <div className="NFT" key={index}>
-//                 <h2>{asset.name}</h2>
-//                 <img className="NFT__preview" src={asset.file_url} />
-
-//                 <p>{asset.description}</p>
-//               </div>
-//             </Link>
-//           ))}
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
 
 export default Collection;
