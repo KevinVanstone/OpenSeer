@@ -12,7 +12,8 @@
   display: flex;
   flex-wrap: wrap;
   min-width: 10rem;
-  min-height: 30rem;
+  min-height: 40rem;
+  max-height: 40rem;
   &__description {
     margin: 0 1rem;
   }

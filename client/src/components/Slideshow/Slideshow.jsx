@@ -67,7 +67,10 @@ class Slideshow extends Component {
             {data.map((asset, index) => (
               <div>
                 {index === this.state.count && (
+                  <>
                   <img className="NFT__slideshow" src={asset.file_url} />
+                  <img className="NFT__slideshow" src={asset.cached_file_url} />
+                  </>
                 )}
               </div>
             ))}

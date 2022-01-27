@@ -3,16 +3,16 @@
 @use "../../../src/styles/partials/mixins" as *;
 
 .NFTs {
-  border-style: solid;
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
+  border: 1px solid $secondarymercury;
+  border-radius: 10px;
   padding: 1rem;
   max-width: 18.75rem;
   display: flex;
   flex-wrap: wrap;
   min-width: 10rem;
   min-height: 30rem;
+  max-height: 30rem;
+  margin: 1rem;
   &__description {
     margin: 0 1rem;
   }

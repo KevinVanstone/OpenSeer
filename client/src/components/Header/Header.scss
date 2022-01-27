@@ -3,9 +3,10 @@
 @use "../../styles/partials/mixins" as *;
 
 .header {
+  height: 50px;
   display: flex;
   align-items: center;
-  background-color: $secondarydark;
+  background-color: $primarylight;
   color: white;
   &__nav {
     display: flex;
@@ -13,7 +14,13 @@
     width: -webkit-fill-available;
   }
   &__logo {
-    max-height: 50px;
-    max-width: 50px;
+    max-height: 30px;
+    max-width: 30px;
+  }
+  &__home {
+    display: flex;
+    width: 150px;
+    justify-content: space-around;
+
   }
 }

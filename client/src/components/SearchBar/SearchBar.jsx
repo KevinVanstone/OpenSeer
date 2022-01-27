@@ -158,7 +158,7 @@ class SearchBar extends Component {
             type="text"
             placeholder="0x..."
           />
-          <button className="search__btn" type="submit" form="nftSearch">Search by ETH wallet</button>
+          <button className="search__btn" type="submit" form="nftSearch">Search Ethereum</button>
         </form>
 
         {/* <p className="search__label">

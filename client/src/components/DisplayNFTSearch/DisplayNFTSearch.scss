@@ -1,22 +1,27 @@
+@use "../../../src/styles/partials/variables" as *;
+@use "../../../src/styles/partials/globals" as *;
+@use "../../../src/styles/partials/mixins" as *;
+
+
 .NFT {
-  // border-style: solid;
-    margin: 1rem;
-    padding: 1rem;
-    max-width: 18.75rem;
+  border: 1px solid $secondarymercury;
+  border-radius: 10px;
+  margin: 1rem;
+  padding: 1rem;
+  max-width: 18.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  &__description {
+    margin: 0 1rem;
+  }
+  &__preview {
+    max-width: 100%;
+  }
+  &__grid {
     display: flex;
     flex-wrap: wrap;
-    &__description {
-      margin: 0 1rem;
-    }
-    &__preview {
-      max-width: 100%;
-    }
-    &__grid {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    &__title {
-        width: 100%;
-    }
   }
-  
+  &__title {
+    width: 100%;
+  }
+}

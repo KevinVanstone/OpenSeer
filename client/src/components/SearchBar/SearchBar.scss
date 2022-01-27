@@ -1,6 +1,7 @@
 @use "../../../src/styles/partials/variables" as *;
 @use "../../../src/styles/partials/globals" as *;
 @use "../../../src/styles/partials/mixins" as *;
+@use "../../../src/styles/partials/buttons" as *;
 
 
 .search {
@@ -20,6 +21,22 @@
 &__btn {
   width: -webkit-fill-available;
   margin-top: .5rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8125rem;
+  text-align: center;
+  border-radius: 1.25rem;
+  text-decoration: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-color: white;
+  background-color: $primarylight;
+  min-width: 8.6875rem;
+  min-height: 2.25rem;
+  color: white;
+  &:hover {
+    background-color: $secondarylight;
+  }
 }
 &__hed {
   padding-top: 0;

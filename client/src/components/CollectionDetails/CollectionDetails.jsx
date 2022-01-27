@@ -53,39 +53,39 @@ function CollectionDetails() {
   console.log(asset);
   return (
     <div>
-      <div className="NFT">
+      <div className="NFTCollected">
         <h1>{asset.name}</h1>
-        <img className="NFT__preview" src={asset.file_url} />
-        <img className="NFT__preview" src={asset.cached_file_url} />
+        <img className="NFTCollected__preview" src={asset.file_url} />
+        <img className="NFTCollected__preview" src={asset.cached_file_url} />
 
         <Link to="/collection">
           <button
-            className="NFT__remove-btn"
+            className="NFTCollected__remove-btn"
             onClick={() => deleteNFT(location.state.id)}
           >
-            <img className="NFT__preview" src={deleteIcon} />
+            <img className="NFTCollected__preview" src={deleteIcon} />
             <p>Remove from collection</p>
           </button>
         </Link>
 
-        <p className="NFT__info">{asset.description}</p>
-        <p className="NFT__info">Contract address: {asset.contract_address}</p>
-        <p className="NFT__info">Creator address {asset.creator_address}</p>
-        <p className="NFT__info">Notes: {newNote}</p>
+        <p className="NFTCollected__info">{asset.description}</p>
+        <p className="NFTCollected__info">Contract address: {asset.contract_address}</p>
+        <p className="NFTCollected__info">Creator address {asset.creator_address}</p>
+        <p className="NFTCollected__info">Notes: {newNote}</p>
 
         <form className="search__form" id="addNote" onSubmit={saveNFTNote}>
-          <div className="NFT__note">
-            <label for="note" className="NFT__note-label">
+          <div className="NFTCollected__note">
+            <label for="note" className="NFTCollected__note-label">
               Save notes on item
             </label>
             <input
-              className="NFT__note-input"
+              className="NFTCollected__note-input"
               id="note"
               type="text"
               name="note"
               placeholder="Might buy soon..."
             />
-            <button className="NFT__note-btn" type="submit" form="addNote">Save note</button>
+            <button className="NFTCollected__note-btn" type="submit" form="addNote">Save note</button>
           </div>
         </form>
       </div>

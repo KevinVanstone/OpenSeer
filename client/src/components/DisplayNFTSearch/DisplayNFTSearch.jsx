@@ -7,7 +7,7 @@ const DisplayNFTSearch = (props) => {
   // console.log(data);
   return (
     <div>
-      <p className="NFT__description">NFTs found on chain: </p>
+      <h2 className="NFT__description">NFTs found on chain: </h2>
       {data && (
         <div className="NFT__grid">
           {data.map((asset, index) => (

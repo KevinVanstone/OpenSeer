@@ -1,3 +1,7 @@
+@use "../../../src/styles/partials/globals" as *;
+@use "../../../src/styles/partials/variables" as *;
+
+
 .NFT {
   margin: 1rem;
   padding: 1rem;
@@ -5,6 +9,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   &__info {
+    margin: 1rem 0;
     max-width: 100%;
     overflow-wrap: break-word;
   }
@@ -21,4 +26,24 @@
     max-width: 70%;
     height: 4rem;
   }
+  &__collect-btn {
+    width: 12rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.8125rem;
+    text-align: center;
+    border-radius: 1.25rem;
+    text-decoration: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    background-color: $primarylight;
+    border-color: white;
+    min-width: 8.6875rem;
+    min-height: 2.25rem;
+    color: white;
+    &:hover {
+      background-color: $secondarylight;
+    }
+}
 }

@@ -36,7 +36,7 @@ class Collection extends Component {
                 <div className="collection" key={index}>
                   <h2>{asset.name}</h2>
                   <img className="collection__preview" src={asset.file_url} />
-
+                  <img className="collection__preview" src={asset.cached_file_url} />
                   <p>{asset.description}</p>
                 </div>
               </Link>

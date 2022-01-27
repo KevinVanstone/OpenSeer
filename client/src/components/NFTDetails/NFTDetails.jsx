@@ -3,7 +3,6 @@ import { useLocation, Link } from "react-router-dom";
 import "./NFTDetails.scss";
 import likeIcon from "../../assets/icons/likes.svg";
 
-
 import axios from "axios";
 const { v4: uuid } = require("uuid");
 
@@ -14,10 +13,11 @@ function NFTDetails() {
 
   function collectNFT() {
     // console.log("<3 Button has been clicked!");
-    // console.log(asset);
+    console.log(asset.cached_file_url);
     let nftToCollect = {
       id: uuid(),
       file_url: asset.file_url,
+      cached_file_url: asset.cached_file_url,
       name: asset.name,
       description: asset.description,
       token_id: asset.token_id,
@@ -63,15 +63,15 @@ function NFTDetails() {
         <img className="NFT__preview" src={asset.file_url} />
         <img className="NFT__preview" src={asset.cached_file_url} />
         <Link to="/collection">
-        <button onClick={collectNFT}>
-          <img className="NFT__preview" src={likeIcon} />
-          <p>Add to collection</p>
-        </button>
+          <button className="NFT__collect-btn" onClick={collectNFT}>
+            <img className="NFT__preview" src={likeIcon} />
+            <p>Add to collection</p>
+          </button>
         </Link>
 
         <p className="NFT__info">{asset.description}</p>
         <p className="NFT__info">Contract address: {asset.contract_address}</p>
-        <p className="NFT__info">Creator address {asset.creator_address}</p>
+        <p className="NFT__info">Creator address: {asset.creator_address}</p>
       </div>
     </div>
   );

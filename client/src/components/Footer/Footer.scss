@@ -1,12 +1,13 @@
 @use "../../styles/partials/variables" as *;
 
 footer {
+  height: 50px;
   width: 100%;
   bottom: 0;
   position: fixed;
   display: flex;
   align-items: center;
-  background-color: $secondarydark;
+  background-color: $primarylight;
   color: white;
 }
 
