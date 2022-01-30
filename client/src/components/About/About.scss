@@ -1,3 +1,13 @@
 .about {
 margin: 1rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+&__hed {
+    font-size: 45px;
+}
+&__qr {
+    max-width: 60%;
+    min-width: 60%;
+}
 }
