@@ -64,7 +64,7 @@ function CollectionDetails() {
         <p className="NFTCollected__info">
           Creator address {asset.creator_address}
         </p>
-        <p className="NFTCollected__info">Notes: {newNote}</p>
+        <p className="NFTCollected__info">Notes: {asset.note}</p>
 
         <form className="search__form" id="addNote" onSubmit={saveNFTNote}>
           <div className="NFTCollected__note">
