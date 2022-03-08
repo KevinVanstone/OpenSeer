@@ -6,14 +6,16 @@ import "./SearchBar.scss";
 
 var validator = require("validator");
 
+// Options for search of ETH addresses (NOTE: add metadata below if more data needed)
 const options = {
-  params: { chain: "ethereum" },
+  params: {chain: 'ethereum', include: 'metadata'},
   headers: {
     "Content-Type": "application/json",
     Authorization: "037cdd3e-56da-4996-abc3-14b16993e4d5",
   },
 };
 
+// Options for search of ETH chain using search string (NOTE: add metadata here if more data needed)
 const options2 = {
   headers: {
     "Content-Type": "application/json",
