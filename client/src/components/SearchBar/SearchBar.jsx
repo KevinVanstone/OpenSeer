@@ -15,6 +15,7 @@ const options = {
   },
 };
 
+// Options for search of ETH chain using search string (NOTE: add metadata here if more data needed)
 const options2 = {
   headers: {
     "Content-Type": "application/json",
