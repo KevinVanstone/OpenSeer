@@ -7,6 +7,7 @@ import Collection from "./components/Collection/Collection.jsx";
 import NFTDetails from "./components/NFTDetails/NFTDetails.jsx";
 import CollectionDetails from "./components/CollectionDetails/CollectionDetails.jsx";
 import Slideshow from "./components/Slideshow/Slideshow.jsx";
+import Profile from "./components/Profile/Profile.jsx";
 
 import "./App.css";
 import "./styles/partials/_globals.scss";
@@ -26,8 +27,7 @@ function App() {
           <Route path="/collection/:NFTID" element={<CollectionDetails />} />
           <Route path="/collection" element={<Collection />} />
           <Route path="/gallery" element={<Slideshow />} />
-
-          {/* <Route path="/profile" element={<Profile />} /> */}
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         <Footer />
       </BrowserRouter>

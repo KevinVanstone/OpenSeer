@@ -16,7 +16,9 @@ class Header extends Component {
         <a href="/search">
         <p>Search</p>
         </a>
+        <a href="/profile">
         <p>Profile</p>
+        </a>
         </div>
       </header>
     );
