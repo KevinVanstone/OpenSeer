@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./DisplayNFTs.scss";
 import { Link } from "react-router-dom";
+import NFTdefault from "../../assets/images/NFT Icon.png";
+
 
 const DisplayNFTs = (props) => {
   const data = props.NFTObjects.nfts;
@@ -18,11 +20,21 @@ const DisplayNFTs = (props) => {
             >
               <div className="NFTs" key={index}>
                 <h2 className="NFTs__title">{asset.name}</h2>
-                <img
+                {asset.file_url && (
+                  <img
                   className="NFTs__preview"
                   src={asset.file_url}
                   alt={asset.name}
                 />
+                )}
+                {!asset.file_url && (
+                  <img
+                  className="NFTs__preview"
+                  src={NFTdefault}
+                  alt={asset.name}
+                />
+                )}
+                
 
                 <p className="NFTs__description">{asset.description}</p>
               </div>
