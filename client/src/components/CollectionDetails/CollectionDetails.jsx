@@ -42,17 +42,29 @@ function CollectionDetails() {
       <div className="NFTCollected">
         <h1>{asset.name}</h1>
         {asset.file_url && (
-          <img className="NFTCollected__preview" src={asset.file_url} />
+          <img
+            className="NFTCollected__preview"
+            src={asset.file_url}
+            alt={asset.name}
+          />
         )}
         {asset.cached_file_url && (
-          <img className="NFTCollected__preview" src={asset.cached_file_url} />
+          <img
+            className="NFTCollected__preview"
+            src={asset.cached_file_url}
+            alt={asset.name}
+          />
         )}
         <Link to="/collection">
           <button
             className="NFTCollected__remove-btn"
             onClick={() => deleteNFT(location.state.id)}
           >
-            <img className="NFTCollected__icon" src={deleteIcon} />
+            <img
+              className="NFTCollected__icon"
+              src={deleteIcon}
+              alt={asset.name}
+            />
             <p>Remove from collection</p>
           </button>
         </Link>

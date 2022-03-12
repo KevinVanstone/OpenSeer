@@ -30,6 +30,9 @@ class Profile extends Component {
       .then((response) => {
         localStorage.setItem(AUTH_TOKEN_KEY, response.data.token);
 
+        console.log(AUTH_TOKEN_KEY);
+        console.log(response.data.token);
+
         this.setState(
           {
             isLoggedIn: true,
