@@ -12,10 +12,10 @@ function CollectionDetails() {
   console.log(location.state);
 
   const [newNote, setNote] = useState("");
-  let [prompt, setPrompt] = useState("Save note");
+  let [prompt, setPrompt] = useState("Save note 📝");
 
   useEffect(() => {
-    prompt = "Saved!";
+    prompt = "Note saved ✔️";
   });
 
   function deleteNFT(id) {
