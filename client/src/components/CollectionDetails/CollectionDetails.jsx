@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./CollectionDetails.scss";
@@ -9,8 +9,14 @@ function CollectionDetails() {
   const location = useLocation();
   const asset = location.state;
 
+  console.log(location.state);
+
   const [newNote, setNote] = useState("");
-  useEffect(() => {});
+  let [prompt, setPrompt] = useState("Save note");
+
+  useEffect(() => {
+    prompt = "Saved!";
+  });
 
   function deleteNFT(id) {
     axios
@@ -21,11 +27,15 @@ function CollectionDetails() {
       .catch((err) => console.log(err));
   }
 
+  // Function called when note saved via form
   function saveNFTNote(event) {
     event.preventDefault();
     const data = event.target;
     const note = data.note.value;
+    
     setNote(note);
+
+    setPrompt(prompt);
 
     let id = location.state.id;
     location.state.note = note;
@@ -74,7 +84,7 @@ function CollectionDetails() {
           Contract address: {asset.contract_address}
         </p>
         <p className="NFTCollected__info">
-          Creator address {asset.creator_address}
+          Creator address: {asset.creator_address}
         </p>
         <p className="NFTCollected__info">Notes: {asset.note}</p>
 
@@ -95,7 +105,7 @@ function CollectionDetails() {
               type="submit"
               form="addNote"
             >
-              Save note
+              <p>{prompt}</p>
             </button>
           </div>
         </form>
