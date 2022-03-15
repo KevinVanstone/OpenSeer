@@ -53,11 +53,11 @@ function NFTDetails() {
       <div className="item">
         <h1>{asset.name}</h1>
         <img className="item__preview" src={asset.file_url} alt={asset.name} />
-        <img
+        {/* <img
           className="item__preview"
           src={asset.cached_file_url}
           alt={asset.name}
-        />
+        /> */}
         <Link to="/collection">
           <button className="item__collect-btn" onClick={collectNFT}>
             <img className="item__preview" src={likeIcon} alt={asset.name} />

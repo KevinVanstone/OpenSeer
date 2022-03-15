@@ -51,13 +51,13 @@ function CollectionDetails() {
     <div>
       <div className="NFTCollected">
         <h1>{asset.name}</h1>
-        {asset.file_url && (
+        {/* {asset.file_url && (
           <img
             className="NFTCollected__preview"
             src={asset.file_url}
             alt={asset.name}
           />
-        )}
+        )} */}
         {asset.cached_file_url && (
           <img
             className="NFTCollected__preview"
