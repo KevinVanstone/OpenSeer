@@ -19,12 +19,12 @@ class Profile extends Component {
   login = (e) => {
     e.preventDefault();
 
-    const username = e.target.username.value;
+    const name = e.target.username.value;
     const password = e.target.password.value;
 
     axios
       .post("http://localhost:8080/users/basicdb", {
-        username,
+        name,
         password,
       })
       .then((response) => {
@@ -86,7 +86,7 @@ class Profile extends Component {
         {!this.state.isLoggedIn && (
           <form onSubmit={this.login}>
             <div>
-              Username:
+              Name:
               <input type="text" name="username" />
             </div>
             <div>
