@@ -19,12 +19,12 @@ class Profile extends Component {
   login = (e) => {
     e.preventDefault();
 
-    const username = e.target.username.value;
+    const name = e.target.username.value;
     const password = e.target.password.value;
 
     axios
       .post("http://localhost:8080/login", {
-        username,
+        name,
         password,
       })
       .then((response) => {
