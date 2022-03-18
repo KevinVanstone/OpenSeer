@@ -3,12 +3,22 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "./Collection.scss";
 
+const AUTH_TOKEN_KEY = "clientAuthToken";
+const DEFAULT_STATE = {
+  isLoggedIn: false,
+  isRegistered: false,
+  profileData: null,
+};
+
 class Collection extends Component {
   state = {
     collectionData: null,
+    ...DEFAULT_STATE,
   };
 
   componentDidMount() {
+    this.fetchProfile();
+
     axios
       .get(`http://localhost:8080/collections/`)
       .then((response) => {
@@ -19,29 +29,72 @@ class Collection extends Component {
       .catch((err) => console.log(err));
   }
 
+  logout = () => {
+    localStorage.removeItem(AUTH_TOKEN_KEY);
+    this.setState({
+      ...DEFAULT_STATE,
+    });
+  };
+
+  fetchProfile = () => {
+    // get the token from local storage, if not authenicated it will be null
+    // if it is authenticated it will be the JWT token we stored on login
+    const authToken = localStorage.getItem(AUTH_TOKEN_KEY);
+
+    axios
+      .get("http://localhost:8080/profile", {
+        headers: {
+          authorization: `Bearer ${authToken}`,
+        },
+      })
+      .then((response) => {
+        this.setState({
+          profileData: response.data,
+          isLoggedIn: true,
+        });
+      });
+  };
+
   render() {
     const data = this.state.collectionData;
     return (
-      <div>
-        {data && (
-          <div className="collection__container">
-            {data.map((asset, index) => (
-              <Link
-                to={`/collection/${asset.id}`}
-                key={asset.token_id}
-                state={asset}
-              >
-                <div className="collection" key={index}>
-                  <h2>{asset.name}</h2>
-                  {/* <img className="collection__preview" src={asset.file_url} alt={asset.name}/> */}
-                  <img className="collection__preview" src={asset.cached_file_url} alt={asset.name}/>
-                  <p className="collection__description">{asset.description}</p>
+      <>
+        {this.state.profileData && (
+          <>
+            {/* <h2>Authorized Page</h2> */}
+            <h3>Welcome, {this.state.profileData.tokenInfo.name}</h3>
+            <h3>Account email: {this.state.profileData.tokenInfo.email}</h3>
+            <button onClick={this.logout}>Logout</button>
+
+            <div>
+              {data && (
+                <div className="collection__container">
+                  {data.map((asset, index) => (
+                    <Link
+                      to={`/collection/${asset.id}`}
+                      key={asset.token_id}
+                      state={asset}
+                    >
+                      <div className="collection" key={index}>
+                        <h2>{asset.name}</h2>
+                        {/* <img className="collection__preview" src={asset.file_url} alt={asset.name}/> */}
+                        <img
+                          className="collection__preview"
+                          src={asset.cached_file_url}
+                          alt={asset.name}
+                        />
+                        <p className="collection__description">
+                          {asset.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
-              </Link>
-            ))}
-          </div>
+              )}
+            </div>
+          </>
         )}
-      </div>
+      </>
     );
   }
 }
