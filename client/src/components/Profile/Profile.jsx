@@ -4,6 +4,7 @@ import axios from "axios";
 const AUTH_TOKEN_KEY = "clientAuthToken";
 const DEFAULT_STATE = {
   isLoggedIn: false,
+  isRegistered: false,
   profileData: null,
 };
 
@@ -16,15 +17,40 @@ class Profile extends Component {
     this.fetchProfile();
   }
 
-  login = (e) => {
+  // Register function - needs to be adapted from login
+  register = (e) => {
     e.preventDefault();
 
-    const name = e.target.username.value;
+    const name = e.target.name.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
 
     axios
-      .post("http://localhost:8080/users/basicdb", {
+      .post("http://localhost:8080/users/register", {
         name,
+        email,
+        password,
+      })
+      .then((response) => {
+        console.log("Account info sent to database - user registered!")
+        this.setState(
+          {
+            isRegistered: true,
+          },
+          // this.fetchProfile
+        );
+      });
+  };
+
+  login = (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    axios
+      .post("http://localhost:8080/users/login", {
+        email,
         password,
       })
       .then((response) => {
@@ -36,20 +62,10 @@ class Profile extends Component {
         this.setState(
           {
             isLoggedIn: true,
-            // this calls fetchProfile after setState has ACTUALLY modified the state
-            // this is a callback
           },
           this.fetchProfile
         );
-
-        // if we call fetchProfile here, isLoggedIn would be false
-        // this.fetchProfile();
       });
-    // equivalent to this
-    // axios.post("http://localhost:8080/login", {
-    //   username: username
-    //   password: password
-    // });
   };
 
   logout = () => {
@@ -81,13 +97,13 @@ class Profile extends Component {
   render() {
     return (
       <>
-        <h1>Profile Login</h1>
+        <h1>Sign In To Open Seer</h1>
 
         {!this.state.isLoggedIn && (
           <form onSubmit={this.login}>
             <div>
-              Name:
-              <input type="text" name="username" />
+              Email:
+              <input type="text" name="email" />
             </div>
             <div>
               Password:
@@ -101,16 +117,36 @@ class Profile extends Component {
           <>
             <h2>Authorized Page</h2>
             <h3>Welcome, {this.state.profileData.tokenInfo.name}</h3>
-            <h3>Login Username: {this.state.profileData.tokenInfo.username}</h3>
-            <h4>
-              Performance Level:
-              {this.state.profileData.accountInfo.performanceLevel}
-            </h4>
-            <h4>
-              Review Date: {this.state.profileData.accountInfo.reviewDate}
-            </h4>
+            <h3>Account email: {this.state.profileData.tokenInfo.email}</h3>
             <button onClick={this.logout}>Logout</button>
           </>
+        )}
+
+
+        {!this.state.isLoggedIn && !this.state.isRegistered && (
+          <>
+        <h2>Don't have an account?</h2>
+        <h1>Register for Open Seer</h1>
+          <form onSubmit={this.register}>
+            <div>
+              Name:
+              <input type="text" name="name" />
+            </div>            
+            <div>
+              Email:
+              <input type="text" name="email" />
+            </div>
+            <div>
+              Password:
+              <input type="password" name="password" />
+            </div>
+            <button>Register</button>
+          </form>
+          </>
+        )}
+
+        {this.state.isRegistered && (
+        <p>Thank you for registering! Sign in using your credentials above. </p>
         )}
       </>
     );
