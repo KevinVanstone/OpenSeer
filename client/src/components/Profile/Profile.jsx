@@ -97,9 +97,11 @@ class Profile extends Component {
   render() {
     return (
       <>
-        <h1>Sign In To Open Seer</h1>
+        <h1>Welcome To Open Seer</h1>
 
         {!this.state.isLoggedIn && (
+          <>
+          <h2>Existing Users Sign In Below.  </h2>
           <form onSubmit={this.login}>
             <div>
               Email:
@@ -111,6 +113,7 @@ class Profile extends Component {
             </div>
             <button>Login</button>
           </form>
+          </>
         )}
 
         {this.state.profileData && (
@@ -125,8 +128,7 @@ class Profile extends Component {
 
         {!this.state.isLoggedIn && !this.state.isRegistered && (
           <>
-        <h2>Don't have an account?</h2>
-        <h1>Register for Open Seer</h1>
+        <h2>No account? Register below.</h2>
           <form onSubmit={this.register}>
             <div>
               Name:

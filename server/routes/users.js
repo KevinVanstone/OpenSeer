@@ -58,7 +58,13 @@ loginRoute.post("/login", (req, res) => {
   const verifyUserLogin = async (name, password, email) => {
     User.findOne({ email: email }, function (err, result) {
       if (err) throw err;
-      console.log("findOne function found:", result.email);
+      console.log("findOne function found user:", result);
+
+      // let testuser = result;
+      var testnote = {note: "Hello world!"};
+
+      result.NFTcollection.push(testnote);
+      result.save();
 
       if(bcrypt.compareSync(password,result.password)) {
         console.log("Password the same!");
