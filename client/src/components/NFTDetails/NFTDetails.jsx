@@ -15,17 +15,12 @@ const NFTDetails = () => {
   let [isLoggedIn, isLoggedInFTN] = useState(false);
   let [profileData, profileDataFTN] = useState(null);
 
-  // IF statement to prevent multiple GET requests or looping 
-  // Need to figure out async/timing to limit the amount of runs
-  // Currently runs 6 times before catching the isLoggedIn info  
-  if (!isLoggedIn) {
-    console.log("Attempting to fetch profile...");
+  useEffect(() => {
     fetchProfile();
-  }
+  }, []);
 
-  console.log(location.state.isLoggedIn);
-
-  console.log(location.state);
+  // console.log(location.state.isLoggedIn);
+  // console.log(location.state);
 
   function logout() {
     localStorage.removeItem(AUTH_TOKEN_KEY);
@@ -46,11 +41,10 @@ const NFTDetails = () => {
       })
       .then((response) => {
         location.state.profileData = response.data;
-        // location.state.isLoggedIn = true;
         isLoggedInFTN(true);
         profileDataFTN(response.data);
-        console.log(isLoggedIn);
-        console.log(profileData);
+        // console.log(isLoggedIn);
+        // console.log(profileData);
       });
   }
 
@@ -98,8 +92,8 @@ const NFTDetails = () => {
         {isLoggedIn && (
           <>
             <h2>Authorized Page</h2>
-            {/* <h3>Welcome, {location.state.profileData.tokenInfo.name}</h3>
-            <h3>Account email: {location.state.profileData.tokenInfo.email}</h3> */}
+            <h3>Welcome, {location.state.profileData.tokenInfo.name}</h3>
+            <h3>Account email: {location.state.profileData.tokenInfo.email}</h3>
             <button onClick={logout}>Logout</button>
           </>
         )}
