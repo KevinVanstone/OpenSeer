@@ -1,14 +1,60 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "./NFTDetails.scss";
 import likeIcon from "../../assets/icons/likes.svg";
-
 import axios from "axios";
 const { v4: uuid } = require("uuid");
 
-function NFTDetails() {
+const AUTH_TOKEN_KEY = "clientAuthToken";
+
+
+
+const NFTDetails = () => {
   const location = useLocation();
   const asset = location.state;
+  let [isLoggedIn, isLoggedInFTN] = useState(false);
+  let [profileData, profileDataFTN] = useState(null);
+
+  // IF statement to prevent multiple GET requests or looping 
+  // Need to figure out async/timing to limit the amount of runs
+  // Currently runs 6 times before catching the isLoggedIn info  
+  if (!isLoggedIn) {
+    console.log("Attempting to fetch profile...");
+    fetchProfile();
+  }
+
+  console.log(location.state.isLoggedIn);
+
+  console.log(location.state);
+
+  function logout() {
+    localStorage.removeItem(AUTH_TOKEN_KEY);
+    isLoggedInFTN(false);
+    profileDataFTN(null);
+  }
+
+  function fetchProfile() {
+    // get the token from local storage, if not authenicated it will be null
+    // if it is authenticated it will be the JWT token we stored on login
+    const authToken = localStorage.getItem(AUTH_TOKEN_KEY);
+    console.log("AuthToken:", authToken);
+    axios
+      .get("http://localhost:8080/profile", {
+        headers: {
+          authorization: `Bearer ${authToken}`,
+        },
+      })
+      .then((response) => {
+        location.state.profileData = response.data;
+        // location.state.isLoggedIn = true;
+        isLoggedInFTN(true);
+        profileDataFTN(response.data);
+        console.log(isLoggedIn);
+        console.log(profileData);
+      });
+  }
+
+
 
   function collectNFT() {
     let nftToCollect = {
@@ -47,9 +93,16 @@ function NFTDetails() {
       .catch((err) => console.log(err));
   }
 
-  console.log(location);
   return (
     <div>
+        {isLoggedIn && (
+          <>
+            <h2>Authorized Page</h2>
+            {/* <h3>Welcome, {location.state.profileData.tokenInfo.name}</h3>
+            <h3>Account email: {location.state.profileData.tokenInfo.email}</h3> */}
+            <button onClick={logout}>Logout</button>
+          </>
+        )}
       <div className="item">
         <h1>{asset.name}</h1>
         {asset.file_url && (

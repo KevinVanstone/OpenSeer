@@ -29,6 +29,32 @@ class Collection extends Component {
       .catch((err) => console.log(err));
   }
 
+  login = (e) => {
+    e.preventDefault();
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    axios
+      .post("http://localhost:8080/users/login", {
+        email,
+        password,
+      })
+      .then((response) => {
+        localStorage.setItem(AUTH_TOKEN_KEY, response.data.token);
+
+        console.log(AUTH_TOKEN_KEY);
+        console.log(response.data.token);
+
+        this.setState(
+          {
+            isLoggedIn: true,
+          },
+          this.fetchProfile
+        );
+      });
+  };
+
   logout = () => {
     localStorage.removeItem(AUTH_TOKEN_KEY);
     this.setState({
@@ -59,6 +85,22 @@ class Collection extends Component {
     const data = this.state.collectionData;
     return (
       <>
+        {!this.state.isLoggedIn && (
+          <>
+            <h2>Log In To See Your NFT Collection </h2>
+            <form onSubmit={this.login}>
+              <div>
+                Email:
+                <input type="text" name="email" />
+              </div>
+              <div>
+                Password:
+                <input type="password" name="password" />
+              </div>
+              <button>Login</button>
+            </form>
+          </>
+        )}
         {this.state.profileData && (
           <>
             {/* <h2>Authorized Page</h2> */}
