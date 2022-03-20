@@ -46,11 +46,28 @@ loginRoute.post("/register", async (req, res) => {
   }
 });
 
+// Save to collection route
+loginRoute.post("/savetodb", (req, res) => {
+  const { nft, email } = req.body;
+
+  console.log(nft);
+  console.log(email);
+
+  User.findOne({ email: email }, function (err, result) {
+    if (err) throw err;
+    console.log("findOne function found user:", result);
+ 
+      result.NFTcollection.push(nft);
+      result.save();
+  });
+
+
+})
+
 // Login Route - Allows valid user in test DB to see restricted content via JWT
 loginRoute.post("/login", (req, res) => {
   const { name, password, email } = req.body;
 
-  console.log(name);
   console.log(password);
   console.log(email);
 
@@ -61,10 +78,10 @@ loginRoute.post("/login", (req, res) => {
       console.log("findOne function found user:", result);
 
       // let testuser = result;
-      var testnote = {note: "Hello world!"};
+      // var testnote = {note: "Hello world!"};
 
-      result.NFTcollection.push(testnote);
-      result.save();
+      // result.NFTcollection.push(testnote);
+      // result.save();
 
       if(bcrypt.compareSync(password,result.password)) {
         console.log("Password the same!");
