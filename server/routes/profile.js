@@ -60,7 +60,38 @@ const authorize = (req, res, next) => {
   });
 
 
+  // Route to return db collection data (no auth for now)
+  profileRoute.get("/nfts", (req, res) => {
+    const { email } = req.body;
+    console.log(email);
+  
+    try {
+    User.findOne({ email: email }, function (err, result) {
+      if (err) throw err;
+      console.log("findOne function found user:", result);
 
+      console.log(result.NFTCollection);
+
+        // result.NFTcollection.push(nft);
+        // result.save();
+    });
+  
+    res.status(201).send();
+  } catch {
+    res.status(500).send();
+  }
+
+
+
+    console.log("Get request hit /profile endpoint! - kev")
+    // res.json({
+    //   tokenInfo: req.jwtDecoded,
+    //   accountInfo: {
+    //     performanceLevel: "7.5",
+    //     reviewDate: "09/15/2020",
+    //   },
+    // });
+  });
 
 
 

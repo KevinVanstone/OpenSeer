@@ -6,7 +6,7 @@ import "./Collection.scss";
 const AUTH_TOKEN_KEY = "clientAuthToken";
 const DEFAULT_STATE = {
   isLoggedIn: false,
-  isRegistered: false,
+  collectionNeeded: true,
   profileData: null,
 };
 
@@ -19,15 +19,44 @@ class Collection extends Component {
   componentDidMount() {
     this.fetchProfile();
 
+
+    
+
+    // axios
+    //   .get(`http://localhost:8080/collections/`)
+    //   .then((response) => {
+    //     this.setState({
+    //       collectionData: response.data,
+    //     });
+    //   })
+    //   .catch((err) => console.log(err));
+  }
+
+  componentDidUpdate() {
+    // console.log(this.state.profileData.tokenInfo.email);
+
+    if (this.state.profileData.tokenInfo.email && this.state.collectionNeeded) {
+      console.log("Email needs to be here:", this.state.profileData.tokenInfo.email);
+      this.fetchNFTs(this.state.profileData.tokenInfo.email);
+    }
+  }
+
+  fetchNFTs = (email) => {
+    console.log("Fetching NFTs...");
+    console.log(email);
     axios
-      .get(`http://localhost:8080/collections/`)
+      .post("http://localhost:8080/collections/db", {
+          email: email,
+      })
       .then((response) => {
+        console.log(response.data);
         this.setState({
           collectionData: response.data,
+          collectionNeeded: false,
         });
-      })
-      .catch((err) => console.log(err));
-  }
+      });
+  };
+
 
   login = (e) => {
     e.preventDefault();
@@ -78,11 +107,17 @@ class Collection extends Component {
           profileData: response.data,
           isLoggedIn: true,
         });
+        console.log(response.data);
       });
   };
 
   render() {
     const data = this.state.collectionData;
+    console.log(data);
+
+    const data2 = this.state.profileData;
+    console.log(data2);
+
     return (
       <>
         {!this.state.isLoggedIn && (

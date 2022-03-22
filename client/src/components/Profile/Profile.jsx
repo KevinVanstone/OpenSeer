@@ -15,6 +15,7 @@ class Profile extends Component {
 
   componentDidMount() {
     this.fetchProfile();
+    // this.fetchNFTs();
   }
 
   // Register function - needs to be adapted from login
@@ -93,6 +94,7 @@ class Profile extends Component {
         });
       });
   };
+
 
   render() {
     return (

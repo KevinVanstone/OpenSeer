@@ -53,6 +53,7 @@ loginRoute.post("/savetodb", (req, res) => {
   console.log(nft);
   console.log(email);
 
+  try {
   User.findOne({ email: email }, function (err, result) {
     if (err) throw err;
     console.log("findOne function found user:", result);
@@ -61,6 +62,10 @@ loginRoute.post("/savetodb", (req, res) => {
       result.save();
   });
 
+  res.status(201).send();
+} catch {
+  res.status(500).send();
+}
 
 })
 
@@ -76,12 +81,6 @@ loginRoute.post("/login", (req, res) => {
     User.findOne({ email: email }, function (err, result) {
       if (err) throw err;
       console.log("findOne function found user:", result);
-
-      // let testuser = result;
-      // var testnote = {note: "Hello world!"};
-
-      // result.NFTcollection.push(testnote);
-      // result.save();
 
       if(bcrypt.compareSync(password,result.password)) {
         console.log("Password the same!");

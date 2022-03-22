@@ -91,13 +91,7 @@ const NFTDetails = () => {
         email: profileData.tokenInfo.email,
       })
       .then((response) => {
-        console.log("Success! I think...");
-        // this.setState(
-        //   {
-        //     isLoggedIn: true,
-        //   },
-        //   this.fetchProfile
-        // );
+        console.log("The NFT to be collected was sent to the savetodb route");
       });
   }
 
