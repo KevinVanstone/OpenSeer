@@ -19,21 +19,9 @@ class Collection extends Component {
   componentDidMount() {
     this.fetchProfile();
 
-
-    
-
-    // axios
-    //   .get(`http://localhost:8080/collections/`)
-    //   .then((response) => {
-    //     this.setState({
-    //       collectionData: response.data,
-    //     });
-    //   })
-    //   .catch((err) => console.log(err));
   }
 
   componentDidUpdate() {
-    // console.log(this.state.profileData.tokenInfo.email);
 
     if (this.state.profileData.tokenInfo.email && this.state.collectionNeeded) {
       console.log("Email needs to be here:", this.state.profileData.tokenInfo.email);
@@ -41,6 +29,7 @@ class Collection extends Component {
     }
   }
 
+  // Function to fetch NFTs from database using profile data available
   fetchNFTs = (email) => {
     console.log("Fetching NFTs...");
     console.log(email);
@@ -84,6 +73,7 @@ class Collection extends Component {
       });
   };
 
+  // Logout function to remove token in local storage
   logout = () => {
     localStorage.removeItem(AUTH_TOKEN_KEY);
     this.setState({
@@ -92,8 +82,7 @@ class Collection extends Component {
   };
 
   fetchProfile = () => {
-    // get the token from local storage, if not authenicated it will be null
-    // if it is authenticated it will be the JWT token we stored on login
+    // Assign token via local storage then send GET with bearer token
     const authToken = localStorage.getItem(AUTH_TOKEN_KEY);
 
     axios
@@ -102,6 +91,7 @@ class Collection extends Component {
           authorization: `Bearer ${authToken}`,
         },
       })
+      // Set state with return data of authorized profile data 
       .then((response) => {
         this.setState({
           profileData: response.data,
@@ -113,10 +103,6 @@ class Collection extends Component {
 
   render() {
     const data = this.state.collectionData;
-    console.log(data);
-
-    const data2 = this.state.profileData;
-    console.log(data2);
 
     return (
       <>

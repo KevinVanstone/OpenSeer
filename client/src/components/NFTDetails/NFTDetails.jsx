@@ -136,12 +136,12 @@ const NFTDetails = () => {
           />
         )}
 
-        {/* <Link to="/collection"> */}
+        <Link to="/collection">
         <button className="item__collect-btn" onClick={saveToDB}>
           <img className="item__preview" src={likeIcon} alt={asset.name} />
           <p>Add to collection</p>
         </button>
-        {/* </Link> */}
+        </Link>
 
         <p className="NFT__info">{asset.description}</p>
         <p className="NFT__info">Contract address: {asset.contract_address}</p>

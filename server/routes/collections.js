@@ -2,8 +2,6 @@ const { Router } = require("express");
 const { v4: uuid } = require("uuid");
 const fs = require("fs");
 const User = require("../models/user");
-
-
 const collectionRoute = Router();
 const express = require("express");
 collectionRoute.use(express.static("public"));
@@ -14,14 +12,6 @@ const readFile = () => {
   return JSON.parse(nftData);
 };
 
-// Function to read objects from database
-// const readDB = () => {
-//   User.findOne({ email: email }, function (err, result) {
-//     if (err) throw err;
-//     console.log("findOne function found user:", result);
-//     console.log(result.email);
-//   });
-// }
 
 // Function to write file to data folder
 const writeFile = (data) => {
@@ -41,16 +31,14 @@ collectionRoute.post("/db", (req, res) => {
   const { email } = req.body;
   console.log("Email sent:", email);
 
+  // "Function" to locate user data in database, then return the saved NFTs
   User.findOne({ email: email }, function (err, result) {
     if (err) throw err;
     console.log("findOne found database user:", result);
- 
     console.log("Collection:", result.NFTcollection);
 
     res.status(200).json(result.NFTcollection);
-
   });
-
 });
 
 // Route 2: POST /collections
