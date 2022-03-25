@@ -69,6 +69,41 @@ loginRoute.post("/savetodb", (req, res) => {
 
 })
 
+// Delete from DB route
+loginRoute.post("/deletefromdb/:nftID", (req, res) => {
+  const { nft, email } = req.body;
+
+  // console.log("Via link:", req.params.nftID);
+
+  console.log(email);
+
+
+
+  try {
+  User.findOne({ email: email }, function (err, result) {
+    if (err) throw err;
+    console.log("findOne function found user:", result);
+    let userData = result.NFTcollection;
+
+    console.log(nft.id);
+    
+    console.log(result.NFTcollection);
+
+    const nftToDelete = userData.find(({id}) => id === nft.id);
+
+      console.log("NFT TO DELETE?:", nftToDelete);
+
+      // result.NFTcollection.push(nft);
+      // result.save();
+  });
+
+  res.status(201).send();
+} catch {
+  res.status(500).send();
+}
+
+})
+
 // Login Route - Allows valid user in test DB to see restricted content via JWT
 loginRoute.post("/login", (req, res) => {
   const { name, password, email } = req.body;
