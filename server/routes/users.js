@@ -77,24 +77,24 @@ loginRoute.post("/deletefromdb/:nftID", (req, res) => {
 
   console.log(email);
 
-
-
   try {
   User.findOne({ email: email }, function (err, result) {
     if (err) throw err;
-    console.log("findOne function found user:", result);
+    // console.log("findOne function found user:", result);
+    // console.log("NFT ID to delete:", nft.id);
+
+    // Assign existing collection to userData
     let userData = result.NFTcollection;
 
-    console.log(nft.id);
-    
-    console.log(result.NFTcollection);
+    // Filter out the selected NFT from the NFTcollection array
+    const newCollection = userData.filter(item => item.id !== nft.id);
 
-    const nftToDelete = userData.find(({id}) => id === nft.id);
+    // Assign the filtered array to the existing DB object
+    result.NFTcollection = newCollection;
 
-      console.log("NFT TO DELETE?:", nftToDelete);
+    // Save changes to DB
+    result.save();
 
-      // result.NFTcollection.push(nft);
-      // result.save();
   });
 
   res.status(201).send();

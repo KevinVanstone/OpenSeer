@@ -132,7 +132,7 @@ function CollectionDetails() {
             alt={asset.name}
           />
         )}
-        {/* <Link to="/collection"> */}
+        <Link to="/collection">
         <button
           className="NFTCollected__remove-btn"
           onClick={() => deleteNFTFromDB(location.state.id)}
@@ -144,7 +144,7 @@ function CollectionDetails() {
           />
           <p>Remove from collection</p>
         </button>
-        {/* </Link> */}
+        </Link>
 
         <p className="NFTCollected__info">{asset.description}</p>
         <p className="NFTCollected__info">
