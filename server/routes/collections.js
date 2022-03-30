@@ -12,7 +12,6 @@ const readFile = () => {
   return JSON.parse(nftData);
 };
 
-
 // Function to write file to data folder
 const writeFile = (data) => {
   fs.writeFileSync("./data/collection.json", JSON.stringify(data, null, 2));
@@ -75,18 +74,54 @@ collectionRoute.delete("/:nftID", (req, res) => {
 });
 
 // Route 4: POST to existing collection item /
-collectionRoute.post("/:nftID", (req, res) => {
-  const collectionObject = readFile();
-  const nftToUpdate = collectionObject.find(
-    (nftToUpdate) => nftToUpdate.id === req.params.nftID
-  );
+// collectionRoute.post("/:nftID", (req, res) => {
+//   const collectionObject = readFile();
+//   const nftToUpdate = collectionObject.find(
+//     (nftToUpdate) => nftToUpdate.id === req.params.nftID
+//   );
 
-  if (!nftToUpdate) {
-    return res.status(404).send("Cannot find NFT requested to add note to");
-  } else {
-    nftToUpdate.note = req.body.note;
-    writeFile(collectionObject);
-    return res.status(200).json(nftToUpdate);
+//   if (!nftToUpdate) {
+//     return res.status(404).send("Cannot find NFT requested to add note to");
+//   } else {
+//     nftToUpdate.note = req.body.note;
+//     writeFile(collectionObject);
+//     return res.status(200).json(nftToUpdate);
+//   }
+// });
+
+// Updated Route 4: POST to MongoDB collection
+collectionRoute.post("/:nftID", (req, res) => {
+  const { note, email } = req.body;
+
+  console.log(email);
+  console.log(note);
+  console.log(req.params.nftID);
+
+  try {
+    User.findOne({ email: email }, function (err, result) {
+      if (err) throw err;
+      console.log("NOTE findOne function found user:", result);
+
+      // const nftToUpdate = result.NFTcollection.find(element => element.id == req.params.nftID);
+      // console.log("NFT To Update:", nftToUpdate)
+      // nftToUpdate.note = note;
+
+      for (i = 0; i < result.NFTcollection.length; i++) {
+        console.log(result.NFTcollection[i]);
+        if (result.NFTcollection[i].id == req.params.nftID) {
+          console.log("NFT To Update:", result.NFTcollection[i]);
+          console.log("Note to add:", note);
+
+          // Unable to add the note here - needs to be fixed
+          result.NFTcollection[i].note = note;
+          result.save();
+        }
+      }
+
+    });
+    res.status(201).send();
+  } catch {
+    res.status(500).send();
   }
 });
 

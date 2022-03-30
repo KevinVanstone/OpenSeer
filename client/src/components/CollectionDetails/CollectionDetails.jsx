@@ -89,6 +89,9 @@ function CollectionDetails() {
   // Function called when note saved via form
   function saveNFTNote(event) {
     event.preventDefault();
+
+    console.log(location.state.profileData.tokenInfo.email);
+
     const data = event.target;
     const note = data.note.value;
 
@@ -99,7 +102,9 @@ function CollectionDetails() {
     let id = location.state.id;
     location.state.note = note;
     axios
-      .post(`http://localhost:8080/collections/${id}`, { note })
+      .post(`http://localhost:8080/collections/${id}`, {
+        note: note,
+        email: location.state.profileData.tokenInfo.email, })
       .then((response) => {
         console.log("NFT ID:", id, "to be updated with note:", note);
       })
