@@ -93,32 +93,21 @@ collectionRoute.delete("/:nftID", (req, res) => {
 collectionRoute.post("/:nftID", (req, res) => {
   const { note, email } = req.body;
 
-  console.log(email);
-  console.log(note);
-  console.log(req.params.nftID);
+  // console.log(email);
+  // console.log(note);
+  // console.log(req.params.nftID);
+
+  async function updateMe(email, note, id) {
+    const query = { email: email, "NFTcollection.id": id };
+  const updateDocument = {
+    $set: { "NFTcollection.$.note": note}
+  };
+  const result = await User.updateOne(query, updateDocument);
+  }
+  
 
   try {
-    User.findOne({ email: email }, function (err, result) {
-      if (err) throw err;
-      console.log("NOTE findOne function found user:", result);
-
-      // const nftToUpdate = result.NFTcollection.find(element => element.id == req.params.nftID);
-      // console.log("NFT To Update:", nftToUpdate)
-      // nftToUpdate.note = note;
-
-      for (i = 0; i < result.NFTcollection.length; i++) {
-        console.log(result.NFTcollection[i]);
-        if (result.NFTcollection[i].id == req.params.nftID) {
-          console.log("NFT To Update:", result.NFTcollection[i]);
-          console.log("Note to add:", note);
-
-          // Unable to add the note here - needs to be fixed
-          result.NFTcollection[i].note = note;
-          result.save();
-        }
-      }
-
-    });
+    updateMe(email, note, req.params.nftID);
     res.status(201).send();
   } catch {
     res.status(500).send();
