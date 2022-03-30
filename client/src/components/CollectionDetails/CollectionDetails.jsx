@@ -116,8 +116,8 @@ function CollectionDetails() {
       {isLoggedIn && (
         <>
           <h2>Authorized Page</h2>
-          {/* <h3>Welcome, {profileData.tokenInfo.name}</h3>
-          <h3>Account email: {profileData.tokenInfo.email}</h3> */}
+          <h3>Welcome, {location.state.profileData.tokenInfo.name}</h3>
+          <h3>Account email: {location.state.profileData.tokenInfo.email}</h3>
           <button onClick={logout}>Logout</button>
         </>
       )}

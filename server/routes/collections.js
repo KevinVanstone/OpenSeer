@@ -73,22 +73,6 @@ collectionRoute.delete("/:nftID", (req, res) => {
   }
 });
 
-// Route 4: POST to existing collection item /
-// collectionRoute.post("/:nftID", (req, res) => {
-//   const collectionObject = readFile();
-//   const nftToUpdate = collectionObject.find(
-//     (nftToUpdate) => nftToUpdate.id === req.params.nftID
-//   );
-
-//   if (!nftToUpdate) {
-//     return res.status(404).send("Cannot find NFT requested to add note to");
-//   } else {
-//     nftToUpdate.note = req.body.note;
-//     writeFile(collectionObject);
-//     return res.status(200).json(nftToUpdate);
-//   }
-// });
-
 // Updated Route 4: POST to MongoDB collection
 collectionRoute.post("/:nftID", (req, res) => {
   const { note, email } = req.body;
@@ -99,12 +83,11 @@ collectionRoute.post("/:nftID", (req, res) => {
 
   async function updateMe(email, note, id) {
     const query = { email: email, "NFTcollection.id": id };
-  const updateDocument = {
-    $set: { "NFTcollection.$.note": note}
-  };
-  const result = await User.updateOne(query, updateDocument);
+    const updateDocument = {
+      $set: { "NFTcollection.$.note": note },
+    };
+    const result = await User.updateOne(query, updateDocument);
   }
-  
 
   try {
     updateMe(email, note, req.params.nftID);
