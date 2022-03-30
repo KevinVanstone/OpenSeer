@@ -124,7 +124,6 @@ class Collection extends Component {
         )}
         {this.state.profileData && (
           <>
-            {/* <h2>Authorized Page</h2> */}
             <h3>Welcome, {this.state.profileData.tokenInfo.name}</h3>
             <h3>Account email: {this.state.profileData.tokenInfo.email}</h3>
             <button onClick={this.logout}>Logout</button>
