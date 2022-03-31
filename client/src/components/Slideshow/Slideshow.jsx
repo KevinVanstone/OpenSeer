@@ -66,7 +66,7 @@ class Slideshow extends Component {
           profileData: response.data,
           isLoggedIn: true,
         });
-        console.log(response.data);
+        console.log(this.state.profileData);
       });
   };
 
@@ -92,11 +92,7 @@ class Slideshow extends Component {
   }
 
   componentDidUpdate() {
-    if (this.state.profileData.tokenInfo.email && this.state.collectionNeeded) {
-      console.log(
-        "Email needs to be here:",
-        this.state.profileData.tokenInfo.email
-      );
+    if (this.state.profileData && this.state.collectionNeeded) {
       this.fetchNFTs(this.state.profileData.tokenInfo.email);
     }
   }
@@ -152,7 +148,7 @@ class Slideshow extends Component {
             <h3>Account email: {this.state.profileData.tokenInfo.email}</h3>
             <button onClick={this.logout}>Logout</button>
 
-            {data && (
+            {this.state.collectionData && (
               <div className="NFT__grid">
                 <FaArrowAltCircleLeft
                   className="left-arrow"
