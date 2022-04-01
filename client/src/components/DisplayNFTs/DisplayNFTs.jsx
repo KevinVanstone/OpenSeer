@@ -23,7 +23,7 @@ const DisplayNFTs = (props) => {
                 {asset.file_url && (
                   <img
                   className="NFTs__preview"
-                  src={asset.file_url}
+                  src={asset.cached_file_url}
                   alt={asset.name}
                 />
                 )}
