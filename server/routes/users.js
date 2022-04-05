@@ -10,6 +10,24 @@ const jwt = require("jsonwebtoken");
 loginRoute.use(express.static("public"));
 loginRoute.use(express.json());
 
+const nodemailer = require('nodemailer');
+
+// Dummy email data 
+
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'OpenSeerComms@gmail.com',
+    pass: '1b3def37ac'
+  }
+});
+
+const mailOptions = {
+  from: 'OpenSeerComms@gmail.com',
+  to: 'kevin@theflyingv.com',
+  subject: 'Sending Email using Node.js',
+  text: 'That was easy!'
+};
 
 // All Users Route
 loginRoute.get("/", async (req, res) => {
@@ -39,6 +57,15 @@ loginRoute.post("/register", async (req, res) => {
     const newUser = await user.save();
 
     console.log("User created:", user);
+
+    // "Function" to send email (Eventually will be verification email)
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email sent: ' + info.response);
+      }
+    });
 
     res.status(201).send();
   } catch {
