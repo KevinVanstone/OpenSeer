@@ -111,27 +111,27 @@ const NFTDetails = () => {
 
   return (
     <div>
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <>
           <h2>Authorized Page</h2>
-          {/* <h3>Welcome, {profileData.tokenInfo.name}</h3>
-          <h3>Account email: {profileData.tokenInfo.email}</h3> */}
+          <h3>Welcome, {profileData.tokenInfo.name}</h3>
+          <h3>Account email: {profileData.tokenInfo.email}</h3>
           <button onClick={logout}>Logout</button>
         </>
-      )}
+      )} */}
       <div className="item">
-        <h1>{asset.name}</h1>
-        {asset.file_url && (
-          <img
-            className="item__preview"
-            src={asset.file_url}
-            alt={asset.name}
-          />
-        )}
-        {asset.cached_file_url && !asset.file_url && (
+        <h1>{asset.name} test</h1>
+        {asset.cached_file_url && (
           <img
             className="item__preview"
             src={asset.cached_file_url}
+            alt={asset.name}
+          />
+        )}
+        {!asset.cached_file_url && asset.file_url && (
+          <img
+            className="item__preview"
+            src={asset.file_url}
             alt={asset.name}
           />
         )}

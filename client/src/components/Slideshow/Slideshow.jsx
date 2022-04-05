@@ -144,9 +144,9 @@ class Slideshow extends Component {
         )}
         {this.state.profileData && (
           <>
-            <h3>Welcome, {this.state.profileData.tokenInfo.name}</h3>
+            {/* <h3>Welcome, {this.state.profileData.tokenInfo.name}</h3>
             <h3>Account email: {this.state.profileData.tokenInfo.email}</h3>
-            <button onClick={this.logout}>Logout</button>
+            <button onClick={this.logout}>Logout</button> */}
 
             {this.state.collectionData && (
               <div className="NFT__grid">
@@ -169,6 +169,7 @@ class Slideshow extends Component {
                           <img
                             className="NFT__slide"
                             src={asset.cached_file_url}
+                            alt={asset.name}
                           />
                         )}
                       </>

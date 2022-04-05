@@ -113,14 +113,14 @@ function CollectionDetails() {
 
   return (
     <div>
-      {isLoggedIn && (
+      {/* {isLoggedIn && (
         <>
           <h2>Authorized Page</h2>
           <h3>Welcome, {location.state.profileData.tokenInfo.name}</h3>
           <h3>Account email: {location.state.profileData.tokenInfo.email}</h3>
           <button onClick={logout}>Logout</button>
         </>
-      )}
+      )} */}
       <div className="NFTCollected">
         <h1>{asset.name}</h1>
         {/* {asset.file_url && (
