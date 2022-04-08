@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import "./Profile.scss";
 
 const AUTH_TOKEN_KEY = "clientAuthToken";
 const DEFAULT_STATE = {
@@ -99,6 +100,7 @@ class Profile extends Component {
   render() {
     return (
       <>
+      <div className="profile">
         <h1>Welcome To Open Seer</h1>
 
         {!this.state.isLoggedIn && (
@@ -115,15 +117,15 @@ class Profile extends Component {
             </div>
             <button>Login</button>
           </form>
+          
           </>
         )}
 
         {this.state.profileData && (
           <>
-            <h2>Authorized Page</h2>
             <h3>Welcome, {this.state.profileData.tokenInfo.name}</h3>
             <h3>Account email: {this.state.profileData.tokenInfo.email}</h3>
-            <button onClick={this.logout}>Logout</button>
+            <button className="profile__btn"onClick={this.logout}>Logout</button>
           </>
         )}
 
@@ -152,6 +154,7 @@ class Profile extends Component {
         {this.state.isRegistered && (
         <p>Thank you for registering! Sign in using your credentials above. </p>
         )}
+      </div>
       </>
     );
   }
