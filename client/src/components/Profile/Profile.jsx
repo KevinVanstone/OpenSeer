@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./Profile.scss";
 
+
 const AUTH_TOKEN_KEY = "clientAuthToken";
 const DEFAULT_STATE = {
   isLoggedIn: false,

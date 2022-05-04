@@ -27,8 +27,8 @@ const NFTDetails = () => {
   }
 
   function fetchProfile() {
-    // get the token from local storage, if not authenicated it will be null
-    // if it is authenticated it will be the JWT token we stored on login
+    // Get the token from local storage, if not authenicated it will be null
+    // If it is authenticated it will be the JWT token we stored on login
     const authToken = localStorage.getItem(AUTH_TOKEN_KEY);
     console.log("AuthToken:", authToken);
     axios
@@ -42,32 +42,34 @@ const NFTDetails = () => {
         isLoggedInFTN(true);
         profileDataFTN(response.data);
         console.log(isLoggedIn);
-        console.log(location.state.profileData.email);
-      });
-  }
-
-  function collectNFT() {
-    let nftToCollect = {
-      id: uuid(),
-      file_url: asset.file_url,
-      cached_file_url: asset.cached_file_url,
-      name: asset.name,
-      description: asset.description,
-      token_id: asset.token_id,
-      contract_address: asset.contract_address,
-      creator_address: asset.creator_address,
-      note: "",
-    };
-    axios
-      .post(`http://localhost:8080/collections/`, nftToCollect)
-      .then((response) => {
-        console.log(
-          "Add to collection button clicked! Object sent: ",
-          nftToCollect
-        );
+        console.log(location.state);
       })
       .catch((err) => console.log(err));
   }
+
+  // Old Collect NFT Function to be removed
+  // function collectNFT() {
+  //   let nftToCollect = {
+  //     id: uuid(),
+  //     file_url: asset.file_url,
+  //     cached_file_url: asset.cached_file_url,
+  //     name: asset.name,
+  //     description: asset.description,
+  //     token_id: asset.token_id,
+  //     contract_address: asset.contract_address,
+  //     creator_address: asset.creator_address,
+  //     note: "",
+  //   };
+  //   axios
+  //     .post(`http://localhost:8080/collections/`, nftToCollect)
+  //     .then((response) => {
+  //       console.log(
+  //         "Add to collection button clicked! Object sent: ",
+  //         nftToCollect
+  //       );
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
   function saveToDB() {
     let nftToCollect = {
@@ -82,7 +84,9 @@ const NFTDetails = () => {
       note: "",
     };
 
-    console.log(nftToCollect);
+    if (profileData == null) {
+      alert("User not logged in. Please register and sign in to begin your collection.")
+    }
     console.log(profileData.tokenInfo.email);
 
     axios
@@ -92,7 +96,8 @@ const NFTDetails = () => {
       })
       .then((response) => {
         console.log("The NFT to be collected was sent to the savetodb route");
-      });
+      })
+      .catch((err) => alert(err));
   }
 
   function saveNFTNote(event) {
