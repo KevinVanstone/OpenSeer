@@ -9,7 +9,18 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 loginRoute.use(express.static("public"));
 loginRoute.use(express.json());
+const nodemailer = require("nodemailer");
 
+
+
+// Data for transporter (sender) of back-end email
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "OpenSeerComms@gmail.com",
+    pass: "1b3def37ac",
+  },
+});
 
 // All Users Route
 loginRoute.get("/", async (req, res) => {
@@ -40,6 +51,23 @@ loginRoute.post("/register", async (req, res) => {
 
     console.log("User created:", user);
 
+    // Set variables for email sendout
+    const mailOptions = {
+      from: "OpenSeerComms@gmail.com",
+      to: req.body.email,
+      subject: "Welcome to Open Seer!",
+      text: `Welcome to Open Seer, ${req.body.name}`,
+    };
+
+    // "Function" to send email (Eventually will be verification email)
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("Email sent: " + info.response);
+      }
+    });
+
     res.status(201).send();
   } catch {
     res.status(500).send();
@@ -54,20 +82,19 @@ loginRoute.post("/savetodb", (req, res) => {
   console.log(email);
 
   try {
-  User.findOne({ email: email }, function (err, result) {
-    if (err) throw err;
-    console.log("findOne function found user:", result);
- 
+    User.findOne({ email: email }, function (err, result) {
+      if (err) throw err;
+      console.log("findOne function found user:", result);
+
       result.NFTcollection.push(nft);
       result.save();
-  });
+    });
 
-  res.status(201).send();
-} catch {
-  res.status(500).send();
-}
-
-})
+    res.status(201).send();
+  } catch {
+    res.status(500).send();
+  }
+});
 
 // Delete from DB route
 loginRoute.post("/deletefromdb/:nftID", (req, res) => {
@@ -78,31 +105,29 @@ loginRoute.post("/deletefromdb/:nftID", (req, res) => {
   console.log(email);
 
   try {
-  User.findOne({ email: email }, function (err, result) {
-    if (err) throw err;
-    // console.log("findOne function found user:", result);
-    // console.log("NFT ID to delete:", nft.id);
+    User.findOne({ email: email }, function (err, result) {
+      if (err) throw err;
+      // console.log("findOne function found user:", result);
+      // console.log("NFT ID to delete:", nft.id);
 
-    // Assign existing collection to userData
-    let userData = result.NFTcollection;
+      // Assign existing collection to userData
+      let userData = result.NFTcollection;
 
-    // Filter out the selected NFT from the NFTcollection array
-    const newCollection = userData.filter(item => item.id !== nft.id);
+      // Filter out the selected NFT from the NFTcollection array
+      const newCollection = userData.filter((item) => item.id !== nft.id);
 
-    // Assign the filtered array to the existing DB object
-    result.NFTcollection = newCollection;
+      // Assign the filtered array to the existing DB object
+      result.NFTcollection = newCollection;
 
-    // Save changes to DB
-    result.save();
+      // Save changes to DB
+      result.save();
+    });
 
-  });
-
-  res.status(201).send();
-} catch {
-  res.status(500).send();
-}
-
-})
+    res.status(201).send();
+  } catch {
+    res.status(500).send();
+  }
+});
 
 // Login Route - Allows valid user in test DB to see restricted content via JWT
 loginRoute.post("/login", (req, res) => {
@@ -117,7 +142,7 @@ loginRoute.post("/login", (req, res) => {
       if (err) throw err;
       console.log("findOne function found user:", result);
 
-      if(bcrypt.compareSync(password,result.password)) {
+      if (bcrypt.compareSync(password, result.password)) {
         console.log("Password the same!");
 
         // use jwt.sign to create a new JWT token. Takes two arguments, the payload and the secret key. We keep out secret key in ".env" file for safety
