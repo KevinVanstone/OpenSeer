@@ -11,6 +11,8 @@ loginRoute.use(express.static("public"));
 loginRoute.use(express.json());
 const nodemailer = require("nodemailer");
 
+
+
 // Data for transporter (sender) of back-end email
 const transporter = nodemailer.createTransport({
   service: "gmail",
