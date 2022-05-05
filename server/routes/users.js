@@ -11,14 +11,14 @@ loginRoute.use(express.static("public"));
 loginRoute.use(express.json());
 const nodemailer = require("nodemailer");
 
-
+const emailPass = process.env.EMAIL_PASS;
 
 // Data for transporter (sender) of back-end email
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: "OpenSeerComms@gmail.com",
-    pass: "1b3def37ac",
+    pass: emailPass,
   },
 });
 
