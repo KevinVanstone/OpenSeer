@@ -125,7 +125,7 @@ const NFTDetails = () => {
         </>
       )} */}
       <div className="item">
-        <h1>{asset.name} test</h1>
+        <h1>{asset.name}</h1>
         {asset.cached_file_url && (
           <img
             className="item__preview"
