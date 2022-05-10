@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./NFTDetails.scss";
 import likeIcon from "../../assets/icons/likes.svg";
 import axios from "axios";
@@ -47,30 +47,6 @@ const NFTDetails = () => {
       .catch((err) => console.log(err));
   }
 
-  // Old Collect NFT Function to be removed
-  // function collectNFT() {
-  //   let nftToCollect = {
-  //     id: uuid(),
-  //     file_url: asset.file_url,
-  //     cached_file_url: asset.cached_file_url,
-  //     name: asset.name,
-  //     description: asset.description,
-  //     token_id: asset.token_id,
-  //     contract_address: asset.contract_address,
-  //     creator_address: asset.creator_address,
-  //     note: "",
-  //   };
-  //   axios
-  //     .post(`http://localhost:8080/collections/`, nftToCollect)
-  //     .then((response) => {
-  //       console.log(
-  //         "Add to collection button clicked! Object sent: ",
-  //         nftToCollect
-  //       );
-  //     })
-  //     .catch((err) => console.log(err));
-  // }
-
   function saveToDB() {
     let nftToCollect = {
       id: uuid(),
@@ -85,7 +61,9 @@ const NFTDetails = () => {
     };
 
     if (profileData == null) {
-      alert("User not logged in. Please register and sign in to begin your collection.")
+      alert(
+        "User not logged in. Please register and sign in to begin your collection."
+      );
     }
     console.log(profileData.tokenInfo.email);
 
@@ -96,6 +74,7 @@ const NFTDetails = () => {
       })
       .then((response) => {
         console.log("The NFT to be collected was sent to the savetodb route");
+        window.location.href = "/collection";
       })
       .catch((err) => alert(err));
   }
@@ -141,12 +120,10 @@ const NFTDetails = () => {
           />
         )}
 
-        <Link to="/collection">
         <button className="item__collect-btn" onClick={saveToDB}>
           <img className="item__preview" src={likeIcon} alt={asset.name} />
           <p>Add to collection</p>
         </button>
-        </Link>
 
         <p className="NFT__info">{asset.description}</p>
         <p className="NFT__info">Contract address: {asset.contract_address}</p>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
-import { Link } from "react-router-dom";
 import "./CollectionDetails.scss";
 import deleteIcon from "../../assets/icons/icon-delete.svg";
 import axios from "axios";
@@ -82,6 +81,7 @@ function CollectionDetails() {
       })
       .then((response) => {
         console.log("NFT ID:", id, "to be deleted from DB!");
+        window.location.href = "/collection";
       })
       .catch((err) => console.log(err));
   }
@@ -104,7 +104,8 @@ function CollectionDetails() {
     axios
       .post(`http://localhost:8080/collections/${id}`, {
         note: note,
-        email: location.state.profileData.tokenInfo.email, })
+        email: location.state.profileData.tokenInfo.email,
+      })
       .then((response) => {
         console.log("NFT ID:", id, "to be updated with note:", note);
       })
@@ -137,7 +138,6 @@ function CollectionDetails() {
             alt={asset.name}
           />
         )}
-        <Link to="/collection">
         <button
           className="NFTCollected__remove-btn"
           onClick={() => deleteNFTFromDB(location.state.id)}
@@ -149,7 +149,6 @@ function CollectionDetails() {
           />
           <p>Remove from collection</p>
         </button>
-        </Link>
 
         <p className="NFTCollected__info">{asset.description}</p>
         <p className="NFTCollected__info">
