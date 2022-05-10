@@ -57,6 +57,7 @@ class Profile extends Component {
         password,
       })
       .then((response) => {
+        console.log("Login response:", response);
         localStorage.setItem(AUTH_TOKEN_KEY, response.data.token);
 
         console.log(AUTH_TOKEN_KEY);
@@ -68,7 +69,11 @@ class Profile extends Component {
           },
           this.fetchProfile
         );
-      });
+      })
+      .catch((error) => {
+        console.log(error.response)
+        alert(error.response.data.message);
+    });
   };
 
   logout = () => {

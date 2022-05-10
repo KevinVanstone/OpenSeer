@@ -139,7 +139,12 @@ loginRoute.post("/login", (req, res) => {
   // Function to Find a user in our real MongoDB
   const verifyUserLogin = async (name, password, email) => {
     User.findOne({ email: email }, function (err, result) {
-      if (err) throw err;
+      if (!result) {
+        return res.status(403).json({
+          success: false,
+          message: "Warning: The email entered was not found. Please check the Email field and try again.",
+        })
+      } 
       console.log("findOne function found user:", result);
 
       if (bcrypt.compareSync(password, result.password)) {
@@ -161,9 +166,9 @@ loginRoute.post("/login", (req, res) => {
       } else {
         console.log("Password incorrect!");
         // if username/password doesn't match we respond with error
-        return res.status(403).json({
+        return res.status(403).send({
           success: false,
-          message: "Email/password combination is wrong",
+          message: "Warning: The email/password combination you entered is incorrect. Please try again.",
         });
       }
     });
