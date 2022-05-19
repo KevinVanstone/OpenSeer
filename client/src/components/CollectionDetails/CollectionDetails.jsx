@@ -15,6 +15,7 @@ function CollectionDetails() {
 
   console.log(location.state);
 
+
   const [newNote, setNote] = useState("");
   let [prompt, setPrompt] = useState("Save note 📝");
 

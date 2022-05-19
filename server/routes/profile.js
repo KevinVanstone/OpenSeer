@@ -45,13 +45,8 @@ const authorize = (req, res, next) => {
 profileRoute.get("/", authorize, (req, res) => {
   // if user is authenticated send back the token info that we stored in request object in the middleware but also any additional sensitive information
 
-  console.log("Get request hit /profile endpoint! - kev");
   res.json({
     tokenInfo: req.jwtDecoded,
-    accountInfo: {
-      performanceLevel: "7.5",
-      reviewDate: "09/15/2020",
-    },
   });
 });
 

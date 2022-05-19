@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./Header.scss";
 import Logo from "../../assets/images/seer.png";
-
 import axios from "axios";
 
 const AUTH_TOKEN_KEY = "clientAuthToken";
@@ -14,11 +13,25 @@ const DEFAULT_STATE = {
 class Header extends Component {
   state = {
     collectionData: null,
+    divClass: "header__nav",
     ...DEFAULT_STATE,
   };
 
   componentDidMount() {
+      console.log(window.location.pathname);
+
+      if (this.isWithinURL("search")) {
+        console.log("We are now on the collection page!");
+        this.setState({
+          divClass: "header__nav-current",
+        });
+      }
     this.fetchProfile();
+  }
+
+  isWithinURL = (page) => {
+    if (window.location.pathname.includes(page)) return true;
+    else return false;
   }
 
   login = (e) => {
@@ -71,7 +84,7 @@ class Header extends Component {
           profileData: response.data,
           isLoggedIn: true,
         });
-        console.log(response.data);
+        // console.log(response.data);
       });
   };
 
@@ -84,11 +97,12 @@ class Header extends Component {
             <p>Open Seer</p>
           </a>
         </div>
-        <div className="header__nav">
+        <div className={this.state.divClass}>
           <a href="/search">
             <p>Search</p>
           </a>
-
+</div>
+          <div className="header__nav">
           {this.state.profileData && (
             <>
               <a href="/profile">
